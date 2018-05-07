@@ -1,0 +1,19 @@
+<!--pages/home/home.wxml-->
+<view class='container'>
+  <view class='header flex_b_c padding_t_b_30'>
+    <view class='left flex_l_c'>
+      <image src='../../images/logo.png'></image>
+      <view class='line_979797'></view>
+      <view class='cities flex_0_c'>
+        <text>全国</text> 
+        <image src='../../images/switch_up_down.png'></image>
+      </view>
+    </view>
+    <view class='right flex_l_c'>
+      <image src='../../images/orderIcon.png'></image>
+      <text>我的订单</text>
+    </view>
+
+  </view>
+</view>
+<view class='f1f1f1_20'></view>

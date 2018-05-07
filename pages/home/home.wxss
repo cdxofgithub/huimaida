@@ -1,0 +1,30 @@
+/* pages/home/home.wxss */
+.header image {
+  width: 192rpx;
+  height: 44rpx;
+}
+.cities {
+  margin-left: 24rpx; 
+  color: #8a8a8a;
+  font-size: 26rpx;
+  margin-top: 4rpx;
+}
+.cities image {
+  width: 24rpx;
+  height: 24rpx;
+  margin-left: 8rpx;
+}
+.line_979797 {
+  width: 2rpx;
+  height: 30rpx;
+  background: #979797;
+  margin-left: 18rpx;
+}
+.header .right {
+  font-size: 26rpx;
+}
+.header .right image {
+  width: 34rpx;
+  height: 34rpx;
+  margin-right: 16rpx;
+}
