@@ -1,16 +1,21 @@
-
 /* 
 -------------
 公共样式 start
 -------------
 */
+
 page {
   font-family: "PingFang SC", "Microsoft Yahei";
   font-size: 30rpx;
   color: #3b3b3b;
+  background: #f1f1f1;
 }
+
 .mainColor {
   color: #3b3b3b;
+}
+.otherColor {
+  color: #5c5c5c;
 }
 .mainActiveColor {
   color: #ff8100;
@@ -18,73 +23,127 @@ page {
 .mainIconColor {
   color: #8a8a8a;
 }
+.therIconColor {
+  color: #9a9a9a;
+}
 .container {
   width: 690rpx;
   margin: 0 auto;
-} 
+}
+
 image {
   width: 30rpx;
   height: 30rpx;
 }
+
+/* 上下padding 20rpx */
+.padding_t_b_20 {
+  padding: 20rpx 0;
+}
+/* 上下padding 20rpx  border-bottom 1rpx */
+.padding_t_b_20_b_b_1 {
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f1f1f1;
+}
+
 /* 上下padding 30rpx */
 .padding_t_b_30 {
   padding: 30rpx 0;
 }
+/* 上下padding 30rpx  border-bottom 1rpx */
+.padding_t_b_30_b_b_1 {
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #f1f1f1;
+}
+
 
 /* f1f1f1填充 20rpx */
+
 .f1f1f1_20 {
   width: 100%;
   height: 20rpx;
   background: #f1f1f1;
 }
 
-
 /* flex 两端对齐 上下居中 */
+
 .flex_b_c {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 /* flex 两端对齐 */
+
 .flex_b_0 {
   display: flex;
   justify-content: space-between;
 }
+
 /* flex 右对齐 */
+
 .flex_0_r {
   display: flex;
   justify-content: flex-end;
 }
+
 /* flex 上下居中 */
+
 .flex_0_c {
   display: flex;
   align-items: center;
 }
+
 /* flex 左对齐 上下居中 */
+
 .flex_l_c {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
+
 /* flex 左对齐 */
+
 .flex_l_0 {
   display: flex;
   justify-content: flex-start;
 }
+
 /* flex around 上下居中 */
+
 .flex_a_c {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
+
 /* flex 左右居中 上下居中 */
+
 .flex_c_c {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* 上下列  居中 */
+
+.f_d_c_c {
+  display: flex;
+  flex-direction: column;
+}
+.shade {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  background: rgba(0,0,0,0.4);
 }
 /* 
 -------------
 公共样式 end
 -------------
 */
+
+

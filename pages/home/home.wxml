@@ -1,19 +1,61 @@
 <!--pages/home/home.wxml-->
-<view class='container'>
-  <view class='header flex_b_c padding_t_b_30'>
+<view>
+  <view class='header flex_b_c'>
     <view class='left flex_l_c'>
       <image src='../../images/logo.png'></image>
       <view class='line_979797'></view>
-      <view class='cities flex_0_c'>
+      <view class='cities flex_0_c' catchtap='showCities'>
         <text>全国</text> 
-        <image src='../../images/switch_up_down.png'></image>
+        <image src='../../images/switch_up_down.png' class="{{showCities ? 'rotate' : ''}}"></image>
+      </view>
+      <view class="show_cities" wx:if="{{showCities}}">
+        <view class='show_city mainActiveColor'>全国(100)</view>
+        <view class='show_city'>全国(100)</view>
+        <view class='show_city'>全国(100)</view>
+        <view class='show_city'>全国(100)</view>
+        <view class='show_city'>全国(100)</view>
+        <view class='show_city'>全国(100)</view>
+        <view class='show_city'>全国(100)</view>
+        <view class='show_city'>全国(100)</view>
+        <view class='show_city'>全国(100)</view>
+        <view class='show_city'>全国(100)</view>
       </view>
     </view>
     <view class='right flex_l_c'>
       <image src='../../images/orderIcon.png'></image>
       <text>我的订单</text>
     </view>
-
   </view>
+  <view class='filter flex_b_c'>
+    <view class="{{type == 0 ? 'mainActiveColor' : ''}}" data-curr="0" catchtap='chooseType'>默认排序</view>
+    <view class="flex_l_c {{(type == 1 || type == 2) ? 'mainActiveColor' : ''}}" catchtap='choosePrice'>
+      <text>按价格</text>
+      <view class='priceIcons f_d_c_c'>
+        <image class='top' src="{{type == 1 ? '../../images/topActive.png' : '../../images/top.png'}}"></image>
+        <image class='bottom' src="{{type == 2 ? '../../images/bottomActive.png' : '../../images/bottom.png'}}"></image>
+      </view>
+    </view>
+    <view class="{{type == 3 ? 'mainActiveColor' : ''}}" data-curr="3" catchtap='chooseType'>按距离</view>
+  </view>
+  <view class='items'>
+    <view class='item' catchtap='toDeatil'>
+      <image lazy-load="true" src='../../images/item_1.jpg'></image>
+      <view class='content'>【山西大酒店 | 母亲节钜惠】享官微专属体验价59元/位，原价138元/位，周末豪华自助餐午/晚通用，限时限量销售，售罄即止！有效期至2018年8月31日！可转赠好友共享！</view>
+      <view class='price'>
+        <text class='new_price mainActiveColor'>￥59</text>
+        <text class='old_price mainIconColor'>￥138</text>
+      </view>
+      <view class='city'>上海</view>
+    </view>
+    <view class='item' catchtap='toDeatil'>
+      <image lazy-load="true" src='../../images/item_2.jpg'></image>
+      <view class='content'>49元抢购汕头金海湾大酒店金荷厅早茶任食品尝券</view>
+      <view class='price'>
+        <text class='new_price mainActiveColor'>￥49</text>
+        <text class='old_price mainIconColor'>￥68</text>
+      </view>
+      <view class='city'>上海</view>
+    </view>
+  </view>
+  <view class='shade' wx:if="{{showCities}}" catchtap='closeCities'></view>
 </view>
-<view class='f1f1f1_20'></view>

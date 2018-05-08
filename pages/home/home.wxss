@@ -1,4 +1,12 @@
 /* pages/home/home.wxss */
+.header {
+  position: relative;
+  padding: 0 30rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+  z-index: 100;
+  height: 100rpx;
+}
 .header image {
   width: 192rpx;
   height: 44rpx;
@@ -13,6 +21,34 @@
   width: 24rpx;
   height: 24rpx;
   margin-left: 8rpx;
+  transition: transform 0.4s ease-out;
+}
+.cities image.rotate {
+  transform: rotate(180deg);
+}
+
+.show_cities {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 100rpx;
+  background: #f1f1f1;
+  padding: 40rpx 40rpx 30rpx;
+  z-index: 11;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.show_city {
+  width: 200rpx;
+  height: 70rpx;
+  text-align: center;
+  line-height: 70rpx;
+  font-size: 26rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+  border-radius: 4rpx;
 }
 .line_979797 {
   width: 2rpx;
@@ -27,4 +63,55 @@
   width: 34rpx;
   height: 34rpx;
   margin-right: 16rpx;
+}
+.filter {
+  background: #fff;
+  padding: 30rpx 60rpx;
+}
+.priceIcons image {
+  width: 20rpx;
+  height: 20rpx;
+  margin-left: 10rpx;
+}
+.items .item {
+  position: relative;
+  margin-bottom: 16rpx;
+  background: #fff;
+}
+.items .item image {
+  width: 100%;
+  height: 360rpx;
+  vertical-align: middle;
+}
+.content {
+  font-size: 34rpx;
+  padding: 30rpx 30rpx 0rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+.price {
+  padding: 40rpx 30rpx 30rpx;
+}
+.price .new_price {
+  font-size: 34rpx;
+  margin-right: 14rpx;
+}
+.price .old_price {
+  font-size: 26rpx;
+  text-decoration: line-through;
+}
+.city {
+  position: absolute;
+  width: 120rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  border-radius: 0 25rpx 25rpx 0;
+  left: 0;
+  top: 30rpx;
+  background: #ff8100;
+  color: #fff;
+  font-size: 24rpx;
+  text-align: center;
 }

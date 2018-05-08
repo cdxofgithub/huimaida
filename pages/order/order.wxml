@@ -1,0 +1,28 @@
+<view class="container">
+  <view class='house_content'>
+    【小鹿惠玩】秒杀价29.9元，限量抢！海甸岛小马骑士体验套餐，走吧！去骑马、喂马，当一个小小马术师！机会难得，有效期长，平时、周末、六一、暑假均可使用！
+  </view>
+</view>
+<view class='pay_detail'>
+  <view class='pay_item flex_b_c'>
+    <view class='left'>单价</view>
+    <view class='right'>￥5888</view>
+  </view>
+  <view class='pay_item flex_b_c'>
+    <view class='left'>数量</view>
+    <view class='right flex_l_c count'>
+      <view class='reduce' catchtap='reduce'>-</view>
+      <view class='num'>{{num}}</view>
+      <view class='add' catchtap='add'>+</view>
+    </view>
+  </view>
+  <view class='pay_item flex_b_c'>
+    <view class='left'>总价</view>
+    <view class='right mainActiveColor'>￥{{totalPrice}}</view>
+  </view>
+  <view class='pay_item flex_b_c'>
+    <view class='left'>手机号</view>
+    <view class='right'>15537786382</view>
+  </view>
+</view>
+<view class='pay' catchtap='pay'>去支付</view>

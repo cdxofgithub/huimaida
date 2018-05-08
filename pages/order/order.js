@@ -1,58 +1,46 @@
-// pages/home/home.js
+// pages/order/order.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    type: 0,
-    showCities: false
+    price: 5888,
+    num: 1,
+    totalPrice: 5888
   },
-
+  reduce: function() {
+    let num = this.data.num
+    if (num > 1) {
+      this.setData({
+        num: num - 1
+      })
+      this.computedValue()
+    }
+  },
+  add: function() {
+    let num = this.data.num
+    this.setData({
+      num: num + 1
+    })
+    this.computedValue()
+  },
+  //价格计算
+  computedValue: function() {
+    let price = this.data.price
+    let num = this.data.num
+    this.setData({
+      totalPrice: price * num
+    })
+  },
+ 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
   
   },
-  //选择类型
-  chooseType: function(e) {
-    let curr = e.currentTarget.dataset.curr
-    this.setData({
-      type: curr
-    })
-  },
-  //选择价格
-  choosePrice: function(e) {
-    let curr = this.data.type
-    if (curr == 1) {
-      this.setData({
-        type: 2
-      })
-    } else {
-      this.setData({
-        type: 1
-      })
-    }
-  },
-  // 展开城市
-  showCities: function() {
-    this.setData({
-      showCities: !this.data.showCities,
-    })
-  },
-  //关闭城市
-  closeCities: function() {
-    this.setData({
-      showCities: !this.data.showCities,
-    })
-  },
-  //进去详情
-  toDeatil: function() {
-    wx.navigateTo({
-      url: '../detail/detail',
-    })
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

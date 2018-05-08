@@ -1,0 +1,43 @@
+/* pages/order/order.wxss */
+.house_content {
+  padding: 30rpx 0;
+  line-height: 1.5;
+}
+.pay_detail {
+  width: 100%;
+  background: #fff;
+}
+.pay_item {
+  width: 690rpx;
+  margin: 0 auto;
+  height: 90rpx;
+  font-size: 28rpx;
+  border-bottom: 1rpx solid #f1f1f1;
+  box-sizing: border-box;
+}
+.pay {
+  width: 600rpx;
+  height: 90rpx;
+  background: #ff8100;
+  text-align: center;
+  line-height: 90rpx;
+  color: #fff;
+  border-radius: 40rpx;
+  margin: 0 auto;
+  margin-top: 100rpx;
+  font-size: 28rpx;
+}
+.pay_item .count view {
+  width: 60rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border: 1rpx solid #f1f1f1;
+  border-right: none;
+}
+.pay_item .count view:last-child {
+  border-right: 1rpx solid #f1f1f1;
+}
+.count .reduce, .count .add {
+  font-size: 40rpx;
+} 

@@ -1,0 +1,113 @@
+/* pages/detail/detail.wxss */
+.page {
+  padding-bottom: 110rpx;
+}
+.house_img image {
+  width: 100%;
+}
+.house_name {
+  width: 100%;
+  padding: 30rpx;
+  font-size: 34rpx;
+  background: #fff;
+  box-sizing: border-box;
+}
+.sales {
+  margin-top: 20rpx;
+  padding: 30rpx;
+  background: #fff;
+}
+.sale {
+  margin-bottom: 26rpx;
+}
+.sale image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}
+.supports {
+  flex-wrap: wrap;
+}
+.support {
+  font-size: 26rpx;
+  color: #8a8a8a;
+  margin-right: 26rpx;
+  margin-bottom: 10rpx;
+}
+.support image {
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 10rpx;
+}
+.contact {
+  margin-top: 20rpx;
+  font-size: 26rpx;
+  color: #5c5c5c;
+  padding: 0 30rpx;
+  background: #fff;
+}
+.contact .name {
+  font-weight: 600;
+}
+.contact image {
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 14rpx;
+}
+.contact .right image {
+  width: 30rpx;
+  height: 30rpx;
+}
+.info {
+  background: #fff;
+  padding: 30rpx;
+  margin-top: 20rpx;
+}
+.info .title {
+  margin-bottom: 40rpx;
+}
+.info .title .heng_xian {
+  width: 50rpx;
+  height: 6rpx;
+  background: #3b3b3b;
+}
+.info .title .tit {
+  margin: 0 20rpx;
+}
+.product_content {
+  color: #5c5c5c;
+  font-size: 28rpx;
+}
+.product_content .content_item {
+  text-indent: 56rpx;
+  line-height: 1.5;
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 90rpx;
+  text-align: center;
+  background: #fff;
+  border-top: 1rpx solid #f1f1f1;
+}
+.footer .left {
+  width: 60%;
+}
+.footer .left .nowPrice {
+  font-size: 34rpx;
+  margin-right: 14rpx;
+}
+.footer .left .oldPrice {
+  font-size: 26rpx;
+  color: #8a8a8a;
+  text-decoration: line-through;
+}
+.footer .right {
+  width: 40%;
+  height: 90rpx;
+  line-height: 90rpx;
+  background: #ff8100;
+  color: #fff;
+}
