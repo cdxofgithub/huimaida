@@ -1,0 +1,142 @@
+/* pages/paySuccess/paySuccess.wxss */
+.success_iocn {
+  padding: 50rpx 0;
+  font-size: 36rpx;
+}
+.success_iocn image {
+  width: 100rpx;
+  height: 100rpx;
+  margin-bottom: 20rpx;
+}
+.goods {
+  background: #fff;
+  padding: 30rpx;
+}
+.title {
+  margin-bottom: 20rpx;
+}
+.good_detail {
+  padding: 40rpx 0;
+  border-bottom: 1rpx dashed #d8d8d8;
+}
+.good {
+  margin-bottom: 20rpx;
+}
+.good .name {
+  font-weight: 600;
+  margin-right: 14rpx;
+}
+.good .num {
+  font-size: 26rpx;
+  color: #8a8a8a
+}
+.validity {
+  font-size: 26rpx;
+  color: #8a8a8a;
+  margin-bottom: 20rpx;
+}
+.card_number {
+  width: 360rpx;
+  height: 100rpx;
+  border: 1rpx solid #f5f5f5;
+  border-radius: 8rpx;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.card_number .left {
+  width: 60rpx;
+  height: 100%;
+  background: #cccccc;
+}
+.card_number .right {
+  width: 300rpx;
+  text-align: center;
+  font-size: 32rpx;
+  color: #636363;
+  letter-spacing: 2rpx;
+}
+.card_number .right text {
+  font-size:26rpx;
+  letter-spacing: 0rpx;
+}
+.reality_pay {
+  padding-top: 30rpx;
+  text-align: right;
+}
+.share_wrap {
+  width: 690rpx;
+  height: 160rpx;
+  line-height: 160rpx;
+  background: #fff;
+  margin: 30rpx auto;
+  border-radius: 70rpx;
+  overflow: hidden;
+}
+.hongbao {
+  width: 110rpx;
+  display: flex;
+  align-items: flex-end;
+}
+.share_wrap image {
+  width: 100%;
+}
+.share {
+  width: 570rpx;
+}
+.share .desc {
+  width: 410rpx;
+  font-size: 26rpx;
+  line-height: 1.3;
+}
+.share .shart_btn {
+  width: 120rpx;
+  height: 120rpx;
+  background: #ff4546;
+  border-radius: 50%;
+  color: #fff;
+  margin-right: 30rpx;
+}
+.contact {
+  margin-top: 20rpx;
+  font-size: 26rpx;
+  color: #5c5c5c;
+  padding: 0 40rpx;
+  background: #fff;
+}
+.contact .name {
+  font-weight: 600;
+}
+.contact image {
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 14rpx;
+}
+.contact text {
+  width: 580rpx;
+}
+.contact .right image {
+  width: 30rpx;
+  height: 30rpx;
+}
+.handle {
+  padding: 50rpx 20rpx 80rpx;
+  border-top: 1rpx solid #f1f1f1;
+  margin-bottom: 20rpx;
+}
+.handle view {
+   width: 300rpx;
+   height: 100rpx;
+   text-align: center;
+   line-height: 100rpx;
+   font-size: 34rpx;
+   border-radius: 14rpx;
+   box-sizing: border-box;
+}
+.handle .again {
+  border: 1rpx solid #f6a134;
+  color: #f6a134;
+}
+.handle .lookDetail {
+  background: #f6a134;
+  color: #fff;
+}

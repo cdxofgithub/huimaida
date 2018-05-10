@@ -20,10 +20,13 @@ page {
 .mainActiveColor {
   color: #ff8100;
 }
+.keyColor {
+  color: #fb4963
+}
 .mainIconColor {
   color: #8a8a8a;
 }
-.therIconColor {
+.otherIconColor {
   color: #9a9a9a;
 }
 .container {
@@ -125,11 +128,17 @@ image {
   align-items: center;
 }
 
-/* 上下列  居中 */
-
+/* 上下列  */
+.f_d {
+  display: flex;
+  flex-direction: column;
+}
+/* 上下列  上下左右居中 */
 .f_d_c_c {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .shade {
   position: fixed;
@@ -139,6 +148,16 @@ image {
   top: 0;
   z-index: 10;
   background: rgba(0,0,0,0.4);
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 90rpx;
+  text-align: center;
+  background: #fff;
+  border-top: 1rpx solid #f1f1f1;
 }
 /* 
 -------------

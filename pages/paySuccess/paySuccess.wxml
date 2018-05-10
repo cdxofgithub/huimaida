@@ -1,0 +1,61 @@
+<view class='success_iocn f_d_c_c'>
+  <image src='../../images/success.png'></image>
+  <text>抢购成功</text>
+</view>
+<view class='goods'>
+  <view class='title'>测试商品</view>
+  <view class='good_detail'>
+    <view class='good flex_l_c'>
+      <view class='name'>测试产品把超级爆款</view>
+      <view class='num'>x1</view>
+    </view>
+    <view class='validity'>有效期2018-01-03 至 2019-03-06</view>
+    <view class='card_number flex_l_c'>
+      <view class='left f_d_c_c'>
+        <text>券</text>
+        <text>号</text>
+      </view>
+      <view class='right'><text>NO:</text> 80006619</view>
+    </view>
+  </view>
+  <view class='reality_pay'>实际支付：
+    <text class='mainActiveColor'>￥0.02</text>（微信支付）</view>
+</view>
+<view class='share_wrap flex_b_0'>
+  <view class='hongbao'>
+    <image mode='widthFix' src='../../images/hongbao.png'></image>
+  </view>
+  <view class='share flex_b_c'>
+    <view class='desc'>
+      会员福利：分享该产品，您的朋友
+      <text class='keyColor'>购买</text>成功后，您将获得
+      <text class='keyColor'>0.5元</text>现金奖励，次日发放至您的微信零钱包。
+    </view>
+    <view class='shart_btn flex_c_c' catchtap='againBook'>去分享</view>
+  </view>
+</view>
+<view class='contact'>
+  <view class='name padding_t_b_20_b_b_1'>动态标题</view>
+  <view class='flex_b_c padding_t_b_20_b_b_1'>
+    <view class='left flex_l_c'>
+      <image src='../../images/address.png'></image>
+      <text>新城区建设大道南边1号</text>
+    </view>
+    <view class='right'>
+      <image src='../../images/right_icon.png'></image>
+    </view>
+  </view>
+  <view class='flex_b_c padding_t_b_20'>
+    <view class='left flex_l_c'>
+      <image src='../../images/phone.png'></image>
+      <text>0890-64846378</text>
+    </view>
+    <view class='right'>
+      <image src='../../images/right_icon.png'></image>
+    </view>
+  </view>
+  <view class='handle flex_b_c'>
+    <view class='again' catchtap='againBook'>再次预定</view>
+    <view class='lookDetail' catchtap='lookDetail'>查看详情</view>
+  </view>
+</view>

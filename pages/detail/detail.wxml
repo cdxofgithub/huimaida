@@ -1,7 +1,13 @@
 <view class='page'>
+  <view class='hongbao flex_b_0' wx:if="{{again}}" catchtap='createPoster'>
+    <view class='hongbao_img'>
+      <image mode='widthFix' src='../../images/hongbao_2.png'></image>
+    </view>
+    <view class='desc'>会员福利：分享该产品,您的朋友<text class='keyColor'>消费</text>成功后,您将获得<text class='keyColor'>0.05元</text>,次日发放至您的微信零钱包【此消息仅您可见喔~】。<text class='keyColor'>点此</text>生成您的分享海报。</view>
+  </view>
   <view class="house">
     <view class='house_img'>
-      <image lazy-load="true" mode='widthFix' src='../../images/item_1.jpg'></image>
+      <image lazy-load="true" src='../../images/item_1.jpg'></image>
     </view>
     <view class='house_name'>
       【山西大酒店 | 母亲节钜惠】享官微专属体验价59元/位，原价138元/位，周末豪华自助餐午/晚通用，限时限量销售，售罄即止！有效期至2018年8月31日！可转赠好友共享！
@@ -61,6 +67,16 @@
   <view class='info productDetails'>
     <view class='title flex_c_c'>
       <view class='heng_xian'></view>
+      <view class='tit'>购买须知</view>
+      <view class='heng_xian'></view>
+    </view>
+    <view class='product_content'>
+      <view class='content_item'>海口开心农场温泉度假村-火山温泉区一共有9个泡池组成，泉水源自地下1000米，因万年前火山喷发而形成的纯净热矿泉。由于富含高浓度的氟成分和偏硅酸成分，以及丰富的矿物质和微量元素，具有保健、养生等多种功效。</view>
+    </view>
+  </view>
+  <view class='info productDetails'>
+    <view class='title flex_c_c'>
+      <view class='heng_xian'></view>
       <view class='tit'>套餐详情</view>
       <view class='heng_xian'></view>
     </view>
@@ -71,7 +87,7 @@
   <view class='info productDetails'>
     <view class='title flex_c_c'>
       <view class='heng_xian'></view>
-      <view class='tit'>购买须知</view>
+      <view class='tit'>产品图片</view>
       <view class='heng_xian'></view>
     </view>
     <view class='product_content'>
@@ -86,3 +102,14 @@
     <view class='right' catchtap='buy'>立即抢购</view>
   </view>
 </view>
+
+
+<!-- 海报生成 -->
+<view class='imagePathBox' hidden="{{maskHidden == false}}">
+    <image src="{{imagePath}}" class='shengcheng'></image>
+    <button class='baocun' bindtap='baocun'>保存相册，分享到朋友圈</button>
+  </view>
+  <view hidden="{{maskHidden == false}}" class="mask"></view>
+  <view class="canvas-box">
+    <canvas style="width: 375px;height: 667px;position:fixed;top:9999px" canvas-id="mycanvas" />
+  </view>

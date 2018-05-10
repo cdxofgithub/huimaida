@@ -1,0 +1,43 @@
+/* pages/orderDetail/orderDetail.wxss */
+order-items {
+  padding-bottom: 100rpx;
+}
+.order-item .title {
+  padding: 20rpx;
+  font-weight: 600;
+  font-size: 28rpx;
+}
+.title .name {
+  max-width: 600rpx;
+
+  margin-right: 20rpx;
+}
+.title .num {
+  letter-spacing: 2rpx;
+}
+.detail {
+  font-size: 28rpx;
+  background: #fff;
+  padding: 30rpx;
+}
+.detail .desx {
+  color: #bcbcbc;
+  margin-bottom: 20rpx;
+}
+.rule {
+  margin-bottom: 20rpx;
+}
+.rule .rule_name {
+  color: #333;
+  font-weight: 600;
+  margin-right: 40rpx;
+}
+.rule .rule_info {
+  color: #3c3c3c;
+}
+.footer {
+  background: #ff5e61;
+  color: #fff;
+  font-size: 34rpx;
+  letter-spacing: 10rpx
+}

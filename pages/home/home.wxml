@@ -10,15 +10,8 @@
       </view>
       <view class="show_cities" wx:if="{{showCities}}">
         <view class='show_city mainActiveColor'>全国(100)</view>
-        <view class='show_city'>全国(100)</view>
-        <view class='show_city'>全国(100)</view>
-        <view class='show_city'>全国(100)</view>
-        <view class='show_city'>全国(100)</view>
-        <view class='show_city'>全国(100)</view>
-        <view class='show_city'>全国(100)</view>
-        <view class='show_city'>全国(100)</view>
-        <view class='show_city'>全国(100)</view>
-        <view class='show_city'>全国(100)</view>
+        <view class='show_city'>海南(100)</view>
+        <view class='show_city'>海口(100)</view>
       </view>
     </view>
     <view class='right flex_l_c'>
@@ -30,7 +23,7 @@
     <view class="{{type == 0 ? 'mainActiveColor' : ''}}" data-curr="0" catchtap='chooseType'>默认排序</view>
     <view class="flex_l_c {{(type == 1 || type == 2) ? 'mainActiveColor' : ''}}" catchtap='choosePrice'>
       <text>按价格</text>
-      <view class='priceIcons f_d_c_c'>
+      <view class='priceIcons f_d'>
         <image class='top' src="{{type == 1 ? '../../images/topActive.png' : '../../images/top.png'}}"></image>
         <image class='bottom' src="{{type == 2 ? '../../images/bottomActive.png' : '../../images/bottom.png'}}"></image>
       </view>

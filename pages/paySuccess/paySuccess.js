@@ -1,41 +1,20 @@
-// pages/order/order.js
+// pages/paySuccess/paySuccess.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    price: 5888,
-    num: 1,
-    totalPrice: 5888
+  
   },
-  reduce: function() {
-    let num = this.data.num
-    if (num > 1) {
-      this.setData({
-        num: num - 1
-      })
-      this.computedValue()
-    }
-  },
-  add: function() {
-    let num = this.data.num
-    this.setData({
-      num: num + 1
-    })
-    this.computedValue()
-  },
-  //价格计算
-  computedValue: function() {
-    let price = this.data.price
-    let num = this.data.num
-    this.setData({
-      totalPrice: price * num
+  againBook: function() {
+    wx.navigateTo({
+      url: '../detail/detail?again=true',
     })
   },
-  pay: function() {
-    wx.redirectTo({
-      url: '../paySuccess/paySuccess',
+  lookDetail: function() {
+    wx.navigateTo({
+      url: '../orderDetail/orderDetail',
     })
   },
   /**

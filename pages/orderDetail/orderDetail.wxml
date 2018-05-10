@@ -1,0 +1,29 @@
+<view class='order-items'>
+  <view class="order-item">
+  <view class='title flex_l_c'>
+    <view class='name'>测试产品</view>
+    <view class='num'> X1</view>
+  </view>
+  <view class='detail'>
+    <view class='desx'>仅限 测试酒店 使用</view>
+    <view class='desx'>有效期 2017-10-17 至 2018-06-30</view>
+    <view class='rules'>
+      <view class='rule flex_l_0'>
+        <view class='rule_name'>● 使用规则</view>
+        <view class='rule_info'>
+          <view class='item'>购买后凭收到的电子券号消费或预约。</view>
+        </view>
+      </view>
+      <view class='rule flex_l_0'>
+        <view class='rule_name'>● 温馨提示</view>
+        <view class='rule_info'>
+          <view class='item'>请在有效期内使用，过期作废。</view>
+          <view class='item'>如需发票，请在消费后向工作人员索取。</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+</view>
+
+<view class='footer flex_c_c' catchtap='back'>返回</view>
