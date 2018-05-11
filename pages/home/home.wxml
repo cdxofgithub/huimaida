@@ -14,7 +14,7 @@
         <view class='show_city'>海口(100)</view>
       </view>
     </view>
-    <view class='right flex_l_c'>
+    <view class='right flex_l_c' catchtap='toMyOrder'>
       <image src='../../images/orderIcon.png'></image>
       <text>我的订单</text>
     </view>

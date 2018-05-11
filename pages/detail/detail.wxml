@@ -105,11 +105,18 @@
 
 
 <!-- 海报生成 -->
-<view class='imagePathBox' hidden="{{maskHidden == false}}">
-    <image src="{{imagePath}}" class='shengcheng'></image>
-    <button class='baocun' bindtap='baocun'>保存相册，分享到朋友圈</button>
+
+<!-- 画布大小按需定制 这里我按照背景图的尺寸定的  -->
+<canvas canvas-id="shareImg" style="width:545px;height:900px"></canvas>
+  
+<!-- 预览区域  -->
+<view hidden='{{hidden}}' class='preview'>
+  <image src='{{prurl}}' mode='widthFix'></image>
+  <button type='primary' size='mini' bindtap='save'>保存分享图</button>
+  <view class='share_info f_d_c_c'>
+    <view class='share_item'>保存图片后，可分享至微信群或朋友圈。</view>
+    <view class='share_item'>当您的好友消费成功后，您将获得<text class='keyColor'>0.05</text>现金奖励噢~</view>
   </view>
-  <view hidden="{{maskHidden == false}}" class="mask"></view>
-  <view class="canvas-box">
-    <canvas style="width: 375px;height: 667px;position:fixed;top:9999px" canvas-id="mycanvas" />
-  </view>
+</view>
+
+<!-- <button class='share' type='primary' bindtap='share'>生成分享图</button> -->

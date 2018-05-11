@@ -31,7 +31,7 @@
       <text class='keyColor'>购买</text>成功后，您将获得
       <text class='keyColor'>0.5元</text>现金奖励，次日发放至您的微信零钱包。
     </view>
-    <view class='shart_btn flex_c_c' catchtap='againBook'>去分享</view>
+    <view class='shart_btn flex_c_c' catchtap='share'>去分享</view>
   </view>
 </view>
 <view class='contact'>
@@ -55,7 +55,7 @@
     </view>
   </view>
   <view class='handle flex_b_c'>
-    <view class='again' catchtap='againBook'>再次预定</view>
+    <view class='again' catchtap='backHome'>返回首页</view>
     <view class='lookDetail' catchtap='lookDetail'>查看详情</view>
   </view>
 </view>

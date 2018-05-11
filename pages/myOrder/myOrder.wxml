@@ -1,0 +1,103 @@
+<view class="orders">
+  <view class="order_item">
+    <view class='order_top flex_b_c'>
+      <view class="time">2018-05-10 08:58:54</view>
+      <view class="price">总价
+        <text class='mainActiveColor'>￥0.06</text>（微信支付）</view>
+    </view>
+    <view class='order_title'>测试酒店</view>
+    <view class='order_name'>大床房
+      <text>x1</text>
+    </view>
+    <view class='order_desc flex_b_c'>
+      <view class='left'>
+        <view class='cardNumber'>
+          NO:
+          <text>50599497</text>
+        </view>
+        <view class='validity'>有效期：2017-10-17 ~ 2018-06-30</view>
+      </view>
+      <view class='right'>
+        <view class='state flex_c_c mainActiveColor'>
+          待使用
+        </view>
+        <view class='cancel flex_c_c otherColor'>取消订单></view>
+      </view>
+    </view>
+  </view>
+  <view class="order_item">
+    <view class='order_top flex_b_c'>
+      <view class="time">2018-05-10 08:58:54</view>
+      <view class="price">总价
+        <text class='mainActiveColor'>￥0.06</text>（微信支付）</view>
+    </view>
+    <view class='order_title'>测试酒店</view>
+    <view class='order_name'>大床房
+      <text>x1</text>
+    </view>
+    <view class='order_desc flex_b_c'>
+      <view class='left'>
+        <view class='cardNumber'>
+          NO:
+          <text>50599497</text>
+        </view>
+        <view class='validity'>有效期：2017-10-17 ~ 2018-06-30</view>
+      </view>
+      <view class='right'>
+        <view class='state flex_c_c disabled'>
+          已使用
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="order_item">
+    <view class='order_top flex_b_c'>
+      <view class="time">2018-05-10 08:58:54</view>
+      <view class="price">总价
+        <text class='mainActiveColor'>￥0.06</text>（微信支付）</view>
+    </view>
+    <view class='order_title'>测试酒店</view>
+    <view class='order_name'>大床房
+      <text>x1</text>
+    </view>
+    <view class='order_desc flex_b_c'>
+      <view class='left'>
+        <view class='cardNumber'>
+          NO:
+          <text>50599497</text>
+        </view>
+        <view class='validity'>有效期：2017-10-17 ~ 2018-06-30</view>
+      </view>
+      <view class='right'>
+        <view class='state flex_c_c disabled'>
+          已失效
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="order_item">
+    <view class='order_top flex_b_c'>
+      <view class="time">2018-05-10 08:58:54</view>
+      <view class="price">总价
+        <text class='mainActiveColor'>￥0.06</text>（微信支付）</view>
+    </view>
+    <view class='order_title'>测试酒店</view>
+    <view class='order_name'>大床房
+      <text>x1</text>
+    </view>
+    <view class='order_desc flex_b_c'>
+      <view class='left'>
+        <view class='cardNumber'>
+          NO:
+          <text>50599497</text>
+        </view>
+        <view class='validity'>有效期：2017-10-17 ~ 2018-06-30</view>
+      </view>
+      <view class='right'>
+        <view class='state flex_c_c disabled'>
+          已取消
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

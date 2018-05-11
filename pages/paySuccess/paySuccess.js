@@ -7,9 +7,14 @@ Page({
   data: {
   
   },
-  againBook: function() {
+  share: function() {
     wx.navigateTo({
       url: '../detail/detail?again=true',
+    })
+  },
+  backHome: function() {
+    wx.reLaunch({
+      url: '../home/home'
     })
   },
   lookDetail: function() {

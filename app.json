@@ -1,13 +1,13 @@
 {
   "pages":[
-    "pages/paySuccess/paySuccess",
     "pages/home/home",
     "pages/index/index",
+    "pages/myOrder/myOrder",
     "pages/detail/detail",
     "pages/order/order",
-    
-    "pages/haibaoTest/haibaoTest",
-    "pages/orderDetail/orderDetail"
+    "pages/orderDetail/orderDetail",
+    "pages/paySuccess/paySuccess",
+    "pages/test/test"
   ],
   "window":{
     "backgroundTextStyle":"light",

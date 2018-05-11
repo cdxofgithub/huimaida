@@ -17,6 +17,9 @@ page {
 .otherColor {
   color: #5c5c5c;
 }
+.disabled {
+  color: #cdcdcd;
+}
 .mainActiveColor {
   color: #ff8100;
 }
@@ -38,6 +41,9 @@ image {
   width: 30rpx;
   height: 30rpx;
 }
+
+
+
 
 /* 上下padding 20rpx */
 .padding_t_b_20 {
