@@ -35,7 +35,7 @@
   </view>
   <view class='contact'>
     <view class='name padding_t_b_20_b_b_1'>动态标题</view>
-    <view class='flex_b_c padding_t_b_20_b_b_1'>
+    <view class='flex_b_c padding_t_b_20_b_b_1' catchtap='openMap'>
       <view class='left flex_l_c'>
         <image src='../../images/address.png'></image>
         <text>新城区建设大道南边1号</text>
@@ -44,13 +44,14 @@
         <image src='../../images/right_icon.png'></image>
       </view>
     </view>
-    <view class='flex_b_c padding_t_b_20'>
+    <view class='flex_b_c padding_t_b_20' catchtap='openPhone'>
       <view class='left flex_l_c'>
         <image src='../../images/phone.png'></image>
         <text>0890-64846378</text>
       </view>
       <view class='right'>
         <image src='../../images/right_icon.png'></image>
+        100
       </view>
     </view>
   </view>
@@ -115,7 +116,7 @@
   <button type='primary' size='mini' bindtap='save'>保存分享图</button>
   <view class='share_info f_d_c_c'>
     <view class='share_item'>保存图片后，可分享至微信群或朋友圈。</view>
-    <view class='share_item'>当您的好友消费成功后，您将获得<text class='keyColor'>0.05</text>现金奖励噢~</view>
+    <view class='share_item'>当您的好友消费成功后，您将获得<text class='keyColor'>￥0.05</text>现金奖励噢~</view>
   </view>
 </view>
 

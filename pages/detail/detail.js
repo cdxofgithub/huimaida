@@ -17,6 +17,7 @@ Page({
   /**
   * 生成分享图
  */
+  
   createPoster: function () {
     var that = this
     wx.showLoading({
