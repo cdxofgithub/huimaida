@@ -1,103 +1,31 @@
-<view class="orders">
-  <view class="order_item">
+<view class="orders" wx:if="{{orderList}}">
+  <view class="order_item" wx:for="{{orderList}}" wx:key="{{index}}">
     <view class='order_top flex_b_c'>
-      <view class="time">2018-05-10 08:58:54</view>
+      <view class="time">{{item.createDate}}</view>
       <view class="price">总价
-        <text class='mainActiveColor'>￥0.06</text>（微信支付）</view>
+        <text class='mainActiveColor'>￥{{item.countPrice}}</text>（微信支付）</view>
     </view>
-    <view class='order_title'>测试酒店</view>
-    <view class='order_name'>大床房
+    <view class='order_name'>{{item.productName}}
       <text>x1</text>
     </view>
     <view class='order_desc flex_b_c'>
       <view class='left'>
         <view class='cardNumber'>
           NO:
-          <text>50599497</text>
+          <text>{{item.orderRandomNum}}</text>
         </view>
-        <view class='validity'>有效期：2017-10-17 ~ 2018-06-30</view>
+        <view class='validity'>有效期：{{item.vaildStartTime}} ~ {{item.vaildEndTime}}</view>
       </view>
       <view class='right'>
-        <view class='state flex_c_c mainActiveColor'>
-          待使用
+        <view class="state flex_c_c {{item.mainColor ? 'mainActiveColor' : ''}}">
+          {{item.orderStatus}}
         </view>
-        <view class='cancel flex_c_c otherColor'>取消订单></view>
+        <!-- <view class='cancel flex_c_c otherColor'>取消订单></view> -->
       </view>
     </view>
   </view>
-  <view class="order_item">
-    <view class='order_top flex_b_c'>
-      <view class="time">2018-05-10 08:58:54</view>
-      <view class="price">总价
-        <text class='mainActiveColor'>￥0.06</text>（微信支付）</view>
-    </view>
-    <view class='order_title'>测试酒店</view>
-    <view class='order_name'>大床房
-      <text>x1</text>
-    </view>
-    <view class='order_desc flex_b_c'>
-      <view class='left'>
-        <view class='cardNumber'>
-          NO:
-          <text>50599497</text>
-        </view>
-        <view class='validity'>有效期：2017-10-17 ~ 2018-06-30</view>
-      </view>
-      <view class='right'>
-        <view class='state flex_c_c disabled'>
-          已使用
-        </view>
-      </view>
-    </view>
-  </view>
-  <view class="order_item">
-    <view class='order_top flex_b_c'>
-      <view class="time">2018-05-10 08:58:54</view>
-      <view class="price">总价
-        <text class='mainActiveColor'>￥0.06</text>（微信支付）</view>
-    </view>
-    <view class='order_title'>测试酒店</view>
-    <view class='order_name'>大床房
-      <text>x1</text>
-    </view>
-    <view class='order_desc flex_b_c'>
-      <view class='left'>
-        <view class='cardNumber'>
-          NO:
-          <text>50599497</text>
-        </view>
-        <view class='validity'>有效期：2017-10-17 ~ 2018-06-30</view>
-      </view>
-      <view class='right'>
-        <view class='state flex_c_c disabled'>
-          已失效
-        </view>
-      </view>
-    </view>
-  </view>
-  <view class="order_item">
-    <view class='order_top flex_b_c'>
-      <view class="time">2018-05-10 08:58:54</view>
-      <view class="price">总价
-        <text class='mainActiveColor'>￥0.06</text>（微信支付）</view>
-    </view>
-    <view class='order_title'>测试酒店</view>
-    <view class='order_name'>大床房
-      <text>x1</text>
-    </view>
-    <view class='order_desc flex_b_c'>
-      <view class='left'>
-        <view class='cardNumber'>
-          NO:
-          <text>50599497</text>
-        </view>
-        <view class='validity'>有效期：2017-10-17 ~ 2018-06-30</view>
-      </view>
-      <view class='right'>
-        <view class='state flex_c_c disabled'>
-          已取消
-        </view>
-      </view>
-    </view>
-  </view>
+</view>
+<view class='empty' wx:else>
+  <image src='../../images/no_dd@2x.png'></image>
+  <view class='text'>暂无订单！</view>
 </view>

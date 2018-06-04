@@ -57,6 +57,7 @@
 }
 .order_desc .state {
   font-size: 32rpx;
+  color: #cdcdcd;
 }
 .order_desc .cancel {
   font-size: 26rpx;

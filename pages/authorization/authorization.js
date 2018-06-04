@@ -1,4 +1,4 @@
-// pages/orderDetail/orderDetail.js
+// pages/authorization/authorization.js
 Page({
 
   /**
@@ -7,18 +7,14 @@ Page({
   data: {
   
   },
-  back: function() {
-    wx.navigateBack()
+  userinfo: function(e) {
+    console.log(e)
   },
-
-  /** 
+  /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let data = JSON.parse(options.data)
-    this.setData({
-      data: data
-    })
+  
   },
 
   /**

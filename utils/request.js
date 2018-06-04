@@ -29,7 +29,7 @@ export const request = (url, data, method, callback) => {
             }
           }
         })
-      } else if (res.data.status == '001' || res.data.status == '002' || res.data.status == '003' || res.data.status == '004' || res.data.status == '005' || res.data.status == '006' || res.data.status == '007' || res.data.status == '011' || res.data.status == '008' || res.data.status == '1' || res.data.status == '010') {
+      } else if (res.data.status == '0001' || res.data.status == '0002' || res.data.status == '0003' || res.data.status == '0004') {
         wxToast({
           title: res.data.message
         })

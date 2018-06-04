@@ -1,10 +1,12 @@
 {
   "pages":[
+    
     "pages/home/home",
     "pages/index/index",
     "pages/myOrder/myOrder",
     "pages/detail/detail",
     "pages/order/order",
+    "pages/authorization/authorization",
     "pages/orderDetail/orderDetail",
     "pages/paySuccess/paySuccess",
     "pages/test/test"

@@ -1,13 +1,16 @@
 // pages/order/order.js
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    price: 5888,
+    price: 0,
     num: 1,
-    totalPrice: 5888
+    totalPrice: 0,
+    phone: '',
+    parentId: ''
   },
   reduce: function() {
     let num = this.data.num
@@ -34,15 +37,99 @@ Page({
     })
   },
   pay: function() {
-    wx.redirectTo({
-      url: '../paySuccess/paySuccess',
+    let that = this
+    if (!(/^1[345678]\d{9}$/.test(that.data.phone))) {
+      app.wxToast({
+        title: '号码格式有误！'
+      })
+    } else {
+      let data = {
+        productId: that.data.id,
+        accesstoken: wx.getStorageSync('accesstoken'),
+        num: that.data.num,
+        phone: that.data.phone,
+        parentId: that.data.parentId
+      }
+      wx.showLoading({
+        title: '加载中...',
+      })
+      var url = app.utils.URL + '/f/api/order/createOrder'
+      app.utils.request(url, JSON.stringify(data), 'POST', function (res) {
+        wx.hideLoading()
+        var result = res.data.data
+        wx.redirectTo({
+          url: '../paySuccess/paySuccess?orderId=' + result.orderId,
+        })
+        // wx.requestPayment({
+        //   'timeStamp': result.timeStamp,
+        //   'nonceStr': result.nonceStr,
+        //   'package': result.package,
+        //   'signType': result.signType,
+        //   'paySign': result.paySign,
+        //   'success': function (res) {
+        //     wx.redirectTo({
+        //       url: '../paySuccess/paySuccess?orderId=' + result.orderId,
+        //     })
+        //   },
+        //   'fail': function (res) {
+        //     if (res.errMsg == 'requestPayment:fail cancel') {
+        //       var url = app.utils.URL + '/f/api/order/cancelPay'
+        //       var data = {
+        //         orderId: result.orderId,
+        //         accesstoken: wx.getStorageSync('accesstoken')
+        //       }
+        //       app.utils.request(url, JSON.stringify(data), 'POST', function (res) {
+        //         if (res.data.status == '0') {
+        //           app.wxToast({
+        //             title: '取消支付成功'
+        //           })
+        //         }
+        //       })
+        //     } else {
+        //       app.wxToast({
+        //         title: '支付出错'
+        //       })
+        //     }
+        //   }
+        // })
+      })
+    }
+  },
+  phoneInput: function(e) {
+    this.setData({
+      phone: e.detail.value
+    })
+  },
+  getPhone: function() {
+    let that = this
+    let data = {
+      accesstoken: wx.getStorageSync('accesstoken')
+    }
+    var url = app.utils.URL + '/f/api/user/getPhone'
+    app.utils.request(url, JSON.stringify(data), 'POST', function (res) {
+      var res = res.data
+      that.setData({
+        phone: res.data.phone ? res.data.phone : ''
+      })
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    let data = JSON.parse(options.data);
+    this.setData({
+      content: data.content,
+      price: data.nowPrice,
+      id: data.productId,
+    })
+    if (options.parentId) {
+      this.setData({
+        parentId: options.parentId
+      })
+    }
+    this.computedValue()
+    this.getPhone()
   },
 
   /**

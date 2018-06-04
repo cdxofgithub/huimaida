@@ -1,4 +1,6 @@
 <!--pages/home/home.wxml-->
+<import src="../../toast/toast.wxml" />
+<template is="wxToast" data="{{...wxToastConfig}}"></template>
 <view>
   <view class='header flex_b_c'>
     <view class='left flex_l_c'>
@@ -29,15 +31,33 @@
     <view class="{{type == 3 ? 'mainActiveColor' : ''}}" data-curr="3" catchtap='chooseType'>按距离</view>
   </view>
   <view class='items'>
-    <view class='item' catchtap='toDeatil' wx:for="{{goodList}}" wx:key="{{index}}">
-      <image lazy-load="true" src='{{url}}{{item.main_pic}}'></image>
-      <view class='content'>{{item.sub_content}}</view>
+    <view class='item' catchtap='toDeatil' wx:for="{{goodList}}" wx:key="{{index}}" data-id="{{item.id}}">
+      <image lazy-load="true" src='{{url}}{{item.mainPic}}'></image>
+      <view class='content'>{{item.subContent}}</view>
       <view class='price'>
-        <text class='new_price mainActiveColor'>￥{{item.sale_price}}</text>
-        <text class='old_price mainIconColor'>￥{{item.origin_price}}</text>
+        <text class='new_price mainActiveColor'>￥{{item.salePrice}}</text>
+        <text class='old_price mainIconColor'>￥{{item.originPrice}}</text>
       </view>
-      <view class='city'>{{item.address}}</view>
+      <view class='city'>海口</view>
     </view>
   </view>
   <view class='shade' wx:if="{{showCities}}" catchtap='closeCities'></view>
+</view>
+
+
+<!-- 获取手机号码自定义弹框 -->
+<view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
+<!--content-->
+<!--使用animation属性指定需要执行的动画-->
+<view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">
+
+  <!--drawer content-->
+  <view class="drawer_title">请登录</view>
+  <view class="drawer_content">
+    <view class='rule'>登录提示：</view>
+    <view class='info'>● 请点击下方的登录按钮；</view>
+    <view class='info'>● 在弹出的授权提示中选择允许完成登录。</view>
+  </view>
+  <!-- <button class="btn_ok" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" bindtap="powerDrawer" data-statu="close">确定</button> -->
+  <button class="btn_ok" open-type='getUserInfo' bindgetuserinfo='userinfo' bindtap="powerDrawer" data-statu="close">登录</button> 
 </view>

@@ -1,4 +1,6 @@
-<view class='page'>
+<import src="../../wxParse/wxParse.wxml"/>
+
+<view class='page' wx:if="{{detail}}">
   <view class='hongbao flex_b_0' wx:if="{{again}}" catchtap='createPoster'>
     <view class='hongbao_img'>
       <image mode='widthFix' src='../../images/hongbao_2.png'></image>
@@ -7,10 +9,9 @@
   </view>
   <view class="house">
     <view class='house_img'>
-      <image lazy-load="true" src='../../images/item_1.jpg'></image>
+      <image lazy-load="true" src='{{url}}{{detail.mainPic}}'></image>
     </view>
-    <view class='house_name'>
-      【山西大酒店 | 母亲节钜惠】享官微专属体验价59元/位，原价138元/位，周末豪华自助餐午/晚通用，限时限量销售，售罄即止！有效期至2018年8月31日！可转赠好友共享！
+    <view class='house_name'>{{detail.subContent}}
     </view>
   </view>
   <view class='sales'>
@@ -19,26 +20,18 @@
       <text>销量破百</text>
     </view>
     <view class='supports flex_l_c'>
-      <view class='support flex_l_c'>
+      <view class='support flex_l_c' wx:for="{{tags}}" wx:key="{{index}}">
         <image src='../../images/support_icon.png'></image>
-        <text>周末节假日通用</text>
-      </view>
-      <view class='support flex_l_c'>
-        <image src='../../images/support_icon.png'></image>
-        <text>免预约</text>
-      </view>
-      <view class='support flex_l_c'>
-        <image src='../../images/support_icon.png'></image>
-        <text>官网独家</text>
+        <text>{{item}}</text>
       </view>
     </view>
   </view>
   <view class='contact'>
-    <view class='name padding_t_b_20_b_b_1'>动态标题</view>
+    <view class='name padding_t_b_20_b_b_1'>{{detail.name}}</view>
     <view class='flex_b_c padding_t_b_20_b_b_1' catchtap='openMap'>
       <view class='left flex_l_c'>
         <image src='../../images/address.png'></image>
-        <text>新城区建设大道南边1号</text>
+        <text>{{detail.address}}</text>
       </view>
       <view class='right'>
         <image src='../../images/right_icon.png'></image>
@@ -47,11 +40,10 @@
     <view class='flex_b_c padding_t_b_20' catchtap='openPhone'>
       <view class='left flex_l_c'>
         <image src='../../images/phone.png'></image>
-        <text>0890-64846378</text>
+        <text>{{detail.phone}}</text>
       </view>
       <view class='right'>
         <image src='../../images/right_icon.png'></image>
-        100
       </view>
     </view>
   </view>
@@ -62,17 +54,17 @@
       <view class='heng_xian'></view>
     </view>
     <view class='product_content'>
-      <view class='content_item'>海口开心农场温泉度假村-火山温泉区一共有9个泡池组成，泉水源自地下1000米，因万年前火山喷发而形成的纯净热矿泉。由于富含高浓度的氟成分和偏硅酸成分，以及丰富的矿物质和微量元素，具有保健、养生等多种功效。</view>
+      <view class='content_item'><template is="wxParse" data="{{wxParseData:article_1.nodes}}"/></view>
     </view>
   </view>
-  <view class='info productDetails'>
+  <!-- <view class='info productDetails'>
     <view class='title flex_c_c'>
       <view class='heng_xian'></view>
       <view class='tit'>购买须知</view>
       <view class='heng_xian'></view>
     </view>
     <view class='product_content'>
-      <view class='content_item'>海口开心农场温泉度假村-火山温泉区一共有9个泡池组成，泉水源自地下1000米，因万年前火山喷发而形成的纯净热矿泉。由于富含高浓度的氟成分和偏硅酸成分，以及丰富的矿物质和微量元素，具有保健、养生等多种功效。</view>
+      <view class='content_item'><template is="wxParse" data="{{wxParseData:article_2.nodes}}"/></view>
     </view>
   </view>
   <view class='info productDetails'>
@@ -82,23 +74,28 @@
       <view class='heng_xian'></view>
     </view>
     <view class='product_content'>
-      <view class='content_item'>海口开心农场温泉度假村-火山温泉区一共有9个泡池组成，泉水源自地下1000米，因万年前火山喷发而形成的纯净热矿泉。由于富含高浓度的氟成分和偏硅酸成分，以及丰富的矿物质和微量元素，具有保健、养生等多种功效。</view>
+      <view class='content_item'><template is="wxParse" data="{{wxParseData:article_3.nodes}}"/></view>
     </view>
-  </view>
-  <view class='info productDetails'>
-    <view class='title flex_c_c'>
-      <view class='heng_xian'></view>
-      <view class='tit'>产品图片</view>
-      <view class='heng_xian'></view>
-    </view>
-    <view class='product_content'>
-      <view class='content_item'>海口开心农场温泉度假村-火山温泉区一共有9个泡池组成，泉水源自地下1000米，因万年前火山喷发而形成的纯净热矿泉。由于富含高浓度的氟成分和偏硅酸成分，以及丰富的矿物质和微量元素，具有保健、养生等多种功效。</view>
+  </view> -->
+  <view class='info otherRecommend'>
+    <view class='name'>其他热销推荐</view>
+    <view class="recommend_item padding_t_b_20_b_b_1 flex_b_c">
+      <view class='img'>
+        <image src='../../images/item_1.jpg'></image>
+      </view>
+      <view class='message f_d_b'>
+        <view class='message_desc'>【南宁永恒朗奕酒店】朗奕·朋友来了时尚餐厅·自助晚餐（平日、周末通用），抢购价98元/位（原价198元/位）+ 自助餐全新啤酒烤肉节系列美食 | 周末不加价，电子券可转赠，有效期至2018年8月31日！</view>
+        <view class='message_price flex_l_0'>
+          <view class='nowPrice mainActiveColor'>￥50</view>
+          <view class='oldPrice'>￥130</view>
+        </view>
+      </view>
     </view>
   </view>
   <view class='footer flex_l_c'>
     <view class='left'>
-      <text class='nowPrice mainActiveColor'>￥29.9</text>
-      <text class='oldPrice'>￥80</text>
+      <text class='nowPrice mainActiveColor'>￥{{detail.salePrice}}</text>
+      <text class='oldPrice'>￥{{detail.originPrice}}</text>
     </view>
     <view class='right' catchtap='buy'>立即抢购</view>
   </view>

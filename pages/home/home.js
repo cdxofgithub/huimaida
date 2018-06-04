@@ -13,26 +13,20 @@ Page({
   data: {
     type: 0,
     showCities: false,
+    start: 0,    //加载的初始位置
+    size: 10,   //加载的条数
     cities: [
       {
-        city: '全国',
-        city_num: 100,
-        index: 0
-      },
-      {
-        city: '海南',
-        city_num: 100,
-        index: 1
-      },
-      {
         city: '海口',
-        city_num: 100,
-        index: 2
-      },
+        city_num: 1,
+        index: 0
+      }
     ],
     currSelectCity: 0,  //当前默认城市是第一个高亮
     currType: 1,
-    url: ''
+    url: '',
+    goodList: [],  //产品列表
+    refresh: false,   //是否允许下拉
   },
   toMyOrder: function () {
     wx.navigateTo({
@@ -90,9 +84,10 @@ Page({
     })
   },
   //进去详情
-  toDeatil: function () {
+  toDeatil: function (e) {
+    let id = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '../detail/detail',
+      url: '../detail/detail?productId=' + id,
     })
   },
   //加载商品列表
@@ -100,16 +95,20 @@ Page({
     let currType = this.data.currType
     let that = this
     let data = {
-      start: 0,
-      size: 15,
+      start: that.data.start,
+      size: that.data.size,
       listFlag: currType
     }
-    console.log(data)
+    wx.showLoading({
+      title: '加载中...',
+    })
     var url = app.utils.URL + '/f/api/product/list'
     app.utils.request(url, JSON.stringify(data), 'POST', function (res) {
-      var res = res.data
+      wx.hideLoading()
+      var res = res.data.data.products
+      let goodList = that.data.goodList.concat(res)
       that.setData({
-        goodList: res.data.products
+        goodList: goodList
       })
     })
   },
@@ -154,11 +153,107 @@ Page({
       }
     });
   },
+
+  // 自定义弹框
+  powerDrawer: function (e) {
+    if (e == 'open') {
+      this.util(e)
+    } else {
+      var currentStatu = e.currentTarget.dataset.statu;
+      this.util(currentStatu)
+    }
+
+
+  },
+  util: function (currentStatu) {
+    /* 动画部分 */
+    // 第1步：创建动画实例   
+    var animation = wx.createAnimation({
+      duration: 200,  //动画时长  
+      timingFunction: "linear", //线性  
+      delay: 0  //0则不延迟  
+    });
+
+    // 第2步：这个动画实例赋给当前的动画实例  
+    this.animation = animation;
+
+    // 第3步：执行第一组动画  
+    animation.opacity(0).rotateX(-100).step();
+
+    // 第4步：导出动画对象赋给数据对象储存  
+    this.setData({
+      animationData: animation.export()
+    })
+
+    // 第5步：设置定时器到指定时候后，执行第二组动画  
+    setTimeout(function () {
+      // 执行第二组动画  
+      animation.opacity(1).rotateX(0).step();
+      // 给数据对象储存的第一组动画，更替为执行完第二组动画的动画对象  
+      this.setData({
+        animationData: animation
+      })
+
+      //关闭  
+      if (currentStatu == "close") {
+        this.setData(
+          {
+            showModalStatus: false
+          }
+        );
+      }
+    }.bind(this), 200)
+
+    // 显示  
+    if (currentStatu == "open") {
+      this.setData(
+        {
+          showModalStatus: true
+        }
+      );
+    }
+  },
+
+  userinfo: function (e) {
+    console.log(e)
+    console.log(e.detail.userInfo.nickName)
+    var url = app.utils.URL + '/f/api/user/updateUserInfo'
+    var data = {
+      nickName: e.detail.userInfo.nickName,
+      avatarUrl: e.detail.userInfo.avatarUrl,
+      gender: e.detail.userInfo.gender,
+      accesstoken: wx.getStorageSync('accesstoken')
+    }
+    app.utils.request(url, JSON.stringify(data), 'POST', function (res) {
+      if (res.data.status == '0') {
+        app.wxToast({
+          title: '登录成功'
+        })
+      }
+    })
+  },
+  //检查是否授权了
+  checkAuthorization: function() {
+    let that = this
+    wx.getSetting({
+      success: function success(res) {
+        console.log(res)
+        var authSetting = res.authSetting;
+        console.log(authSetting)
+          if (!authSetting['scope.userInfo']) {
+            console.log('用户没有授权')
+            that.powerDrawer('open')
+          } else {
+            console.log('用户授权了')
+          } 
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // this.getGoodList()
+    this.getGoodList()
     this.setData({
       url: app.utils.URL
     })
@@ -174,7 +269,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.checkSettingStatu()
+    this.checkAuthorization()
   },
 
   /**
@@ -202,7 +297,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.getGoodList('down')
   },
 
   /**

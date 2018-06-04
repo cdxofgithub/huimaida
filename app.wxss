@@ -133,12 +133,19 @@ image {
   justify-content: center;
   align-items: center;
 }
-
-/* 上下列  */
+/* 上下列be  */
 .f_d {
   display: flex;
   flex-direction: column;
 }
+/* 上下列 space-between  */
+.f_d_b {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
 /* 上下列  上下左右居中 */
 .f_d_c_c {
   display: flex;
@@ -164,6 +171,19 @@ image {
   text-align: center;
   background: #fff;
   border-top: 1rpx solid #f1f1f1;
+}
+.empty {
+  width: 100%;
+  text-align: center;
+  margin-top: 300rpx;
+}
+.empty image {
+  width: 127rpx;
+  height: 127rpx;
+}
+.empty .text {
+  margin-top: 40rpx;
+  font-size: 34rpx;
 }
 /* 
 -------------
@@ -212,4 +232,66 @@ image {
   height: 55px;
   display: block;
   margin: 0 auto 8px auto;
+}
+
+/* 自定义弹框 */
+/*mask*/  
+.drawer_screen {  
+  width: 100%;  
+  height: 100%;  
+  position: fixed;  
+  top: 0;  
+  left: 0;  
+  z-index: 1000;  
+  background: #000;  
+  opacity: 0.5;  
+  overflow: hidden;  
+}  
+  
+/*content*/  
+.drawer_box {  
+  width: 650rpx;  
+  overflow: hidden;  
+  position: fixed;  
+  top: 50%;  
+  left: 0;  
+  z-index: 1001;  
+  background: #FAFAFA;  
+  margin: -120px 50rpx 0 50rpx;  
+  border-radius: 3px;  
+} 
+.drawer_box button[plain] {
+  color: #3CC51F;  
+  border: none;
+  border-top:1px solid #E8E8EA;
+  background: transparent;
+}
+  
+.drawer_title{  
+  padding:15px;  
+  font: 20px "microsoft yahei";  
+  text-align: center;  
+}  
+.drawer_content {  
+  padding: 0 40rpx 30rpx;
+} 
+.drawer_content .rule {
+  margin-bottom: 20rpx
+} 
+.drawer_content .info {
+  padding: 0 30rpx;
+  font-size: 26rpx;
+  color: #5c5c5c;
+  margin-bottom: 10rpx;
+} 
+  
+.btn_ok{  
+  padding: 10px;  
+  font: 20px "microsoft yahei";  
+  text-align: center;  
+  border-top: 1px solid #E8E8EA;  
+  color: #3CC51F;  
+}  
+button.btn_ok {
+  border-radius: 0;
 }

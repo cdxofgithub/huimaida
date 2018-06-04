@@ -15,6 +15,9 @@
   border-bottom: 1rpx solid #f1f1f1;
   box-sizing: border-box;
 }
+.pay_item .left {
+  width: 200rpx;
+}
 .pay {
   width: 600rpx;
   height: 90rpx;
@@ -26,6 +29,12 @@
   margin: 0 auto;
   margin-top: 100rpx;
   font-size: 28rpx;
+}
+.pay_item .right input {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  text-align: right;
 }
 .pay_item .count view {
   width: 60rpx;
