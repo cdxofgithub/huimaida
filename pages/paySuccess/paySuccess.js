@@ -7,7 +7,8 @@ Page({
    */
   data: {
     array: ['卡片分享', '海报分享'],
-    hidden: true
+    hidden: true,
+    orderDetail: ''
   },
   bindPickerChange: function (e) {
     let index = e.detail.value
@@ -20,6 +21,11 @@ Page({
     } else {
       this.getHaibao()
     }
+  },
+  toggleHidden: function() {
+    this.setData({
+      hidden: true
+    })
   },
   getHaibao: function() {
     let that = this
@@ -36,48 +42,37 @@ Page({
     app.utils.request(url, JSON.stringify(data), 'POST', function (res) {
       var res = res.data.data
       console.log(res)
+      let qrPath = app.utils.URL + res.qrPath
+      let localPath
       that.setData({
-        qrPath: app.utils.URL + res.qrPath
+        qrPath: qrPath
       })
-      console.log(that.data.qrPath)
-      let promise1 = new Promise(function (resolve, reject) {
-        wx.getImageInfo({
-          src: '../../images/qrcode.jpg',
-          success: function (res) {
-            console.log(res)
-            resolve(res);
+      const ctx = wx.createCanvasContext('shareImg')
+
+      //主要就是计算好各个图文的位置
+      ctx.drawImage('../../images/qrbg.png', 0, 0, 545, 800)
+      
+      ctx.setTextAlign('center')
+      ctx.setFillStyle('#ffffff')
+      ctx.setFontSize(24)
+      ctx.fillText('邀您扫码', 545 / 2, 120)
+      ctx.fillText('立享优惠', 545 / 2, 160)
+      wx.downloadFile({
+        url: qrPath, //仅为示例，并非真实的资源
+        success: function (res) {
+          console.log(res)
+          // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+          if (res.statusCode === 200) {
+            ctx.drawImage(res.tempFilePath, 158, 190, 210, 210)
+            ctx.stroke()
+            ctx.draw()
+            that.createPoster()
           }
-        })
-      });
-      let promise2 = new Promise(function (resolve, reject) {
-        wx.getImageInfo({
-          src: '../../images/qrbg.png',
-          success: function (res) {
-            console.log(res)
-            resolve(res);
-          }
-        })
-      });
-      Promise.all([
-        promise1, promise2
-      ]).then(res => {
-        console.log(res)
-        const ctx = wx.createCanvasContext('shareImg')
-
-        //主要就是计算好各个图文的位置
-        ctx.drawImage('../../' + res[0].path, 158, 190, 210, 210)
-        ctx.drawImage('../../' + res[1].path, 0, 0, 545, 800)
-
-        ctx.setTextAlign('center')
-        ctx.setFillStyle('#ffffff')
-        ctx.setFontSize(24)
-        ctx.fillText('邀您扫码', 545 / 2, 120)
-        ctx.fillText('立享优惠', 545 / 2, 160)
-
-        ctx.stroke()
-        ctx.draw()
+          
+        }
       })
-      that.createPoster()
+      
+      
     })
   },
   backHome: function() {
@@ -190,7 +185,6 @@ Page({
   /**
 * 生成分享图
 */
-
   createPoster: function () {
     var that = this
     setTimeout(function () {

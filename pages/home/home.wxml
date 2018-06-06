@@ -4,14 +4,15 @@
 <view>
   <view class='header flex_b_c'>
     <view class='left flex_l_c'>
-      <image src='../../images/logo.png'></image>
+      <view class='logo'><image src='../../images/logo.png'></image></view>
+      <view class='logo_name'>惠麦达</view>
       <view class='line_979797'></view>
       <view class='cities flex_0_c' catchtap='showCities'>
         <text>全国</text> 
         <image src='../../images/switch_up_down.png' class="{{showCities ? 'rotate' : ''}}"></image>
       </view>
       <view class="show_cities" wx:if="{{showCities}}">
-        <view class="show_city {{currSelectCity == index ? 'mainActiveColor' : ''}}" wx:for="{{cities}}" wx:key="{{index}}" data-index='{{index}}' catchtap='selectCity'>{{item.city}}({{item.city_num}})</view>
+        <view class="show_city {{currSelectCity == index ? 'mainActiveColor' : ''}}" wx:for="{{cities}}" wx:key="{{index}}" data-index='{{index}}' catchtap='selectCity'>{{item.city}}</view>
       </view>
     </view>
     <view class='right flex_l_c' catchtap='toMyOrder'>
@@ -43,6 +44,7 @@
   </view>
   <view class='shade' wx:if="{{showCities}}" catchtap='closeCities'></view>
 </view>
+<view class='noMore' wx:if="{{noMore}}">------没有更多了------</view>
 
 
 <!-- 获取手机号码自定义弹框 -->

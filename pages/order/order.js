@@ -57,41 +57,41 @@ Page({
       app.utils.request(url, JSON.stringify(data), 'POST', function (res) {
         wx.hideLoading()
         var result = res.data.data
-        wx.redirectTo({
-          url: '../paySuccess/paySuccess?orderId=' + result.orderId,
-        })
-        // wx.requestPayment({
-        //   'timeStamp': result.timeStamp,
-        //   'nonceStr': result.nonceStr,
-        //   'package': result.package,
-        //   'signType': result.signType,
-        //   'paySign': result.paySign,
-        //   'success': function (res) {
-        //     wx.redirectTo({
-        //       url: '../paySuccess/paySuccess?orderId=' + result.orderId,
-        //     })
-        //   },
-        //   'fail': function (res) {
-        //     if (res.errMsg == 'requestPayment:fail cancel') {
-        //       var url = app.utils.URL + '/f/api/order/cancelPay'
-        //       var data = {
-        //         orderId: result.orderId,
-        //         accesstoken: wx.getStorageSync('accesstoken')
-        //       }
-        //       app.utils.request(url, JSON.stringify(data), 'POST', function (res) {
-        //         if (res.data.status == '0') {
-        //           app.wxToast({
-        //             title: '取消支付成功'
-        //           })
-        //         }
-        //       })
-        //     } else {
-        //       app.wxToast({
-        //         title: '支付出错'
-        //       })
-        //     }
-        //   }
+        // wx.redirectTo({
+        //   url: '../paySuccess/paySuccess?orderId=' + result.orderId,
         // })
+        wx.requestPayment({
+          'timeStamp': result.timeStamp,
+          'nonceStr': result.nonceStr,
+          'package': result.package,
+          'signType': result.signType,
+          'paySign': result.paySign,
+          'success': function (res) {
+            wx.redirectTo({
+              url: '../paySuccess/paySuccess?orderId=' + result.orderId,
+            })
+          },
+          'fail': function (res) {
+            if (res.errMsg == 'requestPayment:fail cancel') {
+              var url = app.utils.URL + '/f/api/order/cancelPay'
+              var data = {
+                orderId: result.orderId,
+                accesstoken: wx.getStorageSync('accesstoken')
+              }
+              app.utils.request(url, JSON.stringify(data), 'POST', function (res) {
+                if (res.data.status == '0') {
+                  app.wxToast({
+                    title: '取消支付成功'
+                  })
+                }
+              })
+            } else {
+              app.wxToast({
+                title: '支付出错'
+              })
+            }
+          }
+        })
       })
     }
   },
@@ -101,12 +101,14 @@ Page({
     })
   },
   getPhone: function() {
+    wx.showLoading()
     let that = this
     let data = {
       accesstoken: wx.getStorageSync('accesstoken')
     }
     var url = app.utils.URL + '/f/api/user/getPhone'
     app.utils.request(url, JSON.stringify(data), 'POST', function (res) {
+      wx.hideLoading()
       var res = res.data
       that.setData({
         phone: res.data.phone ? res.data.phone : ''
@@ -123,11 +125,12 @@ Page({
       price: data.nowPrice,
       id: data.productId,
     })
-    if (options.parentId) {
+    if (data.parentId) {
       this.setData({
-        parentId: options.parentId
+        parentId: data.parentId
       })
     }
+    console.log('parentId' + this.data.parentId)
     this.computedValue()
     this.getPhone()
   },

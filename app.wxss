@@ -21,7 +21,7 @@ page {
   color: #cdcdcd;
 }
 .mainActiveColor {
-  color: #ff8100;
+  color: #ff8100 !important;
 }
 .keyColor {
   color: #fb4963

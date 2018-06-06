@@ -10,7 +10,10 @@ Page({
     again: false,
     hidden: true,
     id: '',
-    parentId: ''
+    parentId: '',
+    article_1: '',
+    article_2: '',
+    article_3: ''
   },
   buy: function() {
     let data = {
@@ -19,6 +22,7 @@ Page({
       nowPrice: this.data.detail.salePrice,
       parentId: this.data.parentId
     }
+    console.log(data)
     wx.navigateTo({
       url: '../order/order?data=' + JSON.stringify(data),
     })
@@ -127,10 +131,25 @@ Page({
       var article_1 = res.data.detail.detailContent
       var article_2 = res.data.detail.buyContent
       var article_3 = res.data.detail.packageContent
+      that.setData({
+        article_a: article_1,
+        article_b: article_2,
+        article_c: article_3
+      })
+      console.log(that.data.article_1)
+      console.log(that.data.article_2)
+      console.log(that.data.article_3)
       WxParse.wxParse('article_1', 'html', article_1, that, 0);
       WxParse.wxParse('article_2', 'html', article_2, that, 0);
       WxParse.wxParse('article_3', 'html', article_3, that, 0);
     })
+  },
+  previewImage: function() {
+    wx.previewImage({
+      current: '', // 当前显示图片的http链接
+      urls: [this.data.url + this.data.detail.mainPic] // 需要预览的图片http链接列表
+    })
+
   },
   /**
    * 生命周期函数--监听页面加载

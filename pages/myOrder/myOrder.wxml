@@ -1,31 +1,73 @@
-<view class="orders" wx:if="{{orderList}}">
-  <view class="order_item" wx:for="{{orderList}}" wx:key="{{index}}">
-    <view class='order_top flex_b_c'>
-      <view class="time">{{item.createDate}}</view>
-      <view class="price">总价
-        <text class='mainActiveColor'>￥{{item.countPrice}}</text>（微信支付）</view>
-    </view>
-    <view class='order_name'>{{item.productName}}
-      <text>x1</text>
-    </view>
-    <view class='order_desc flex_b_c'>
-      <view class='left'>
-        <view class='cardNumber'>
-          NO:
-          <text>{{item.orderRandomNum}}</text>
-        </view>
-        <view class='validity'>有效期：{{item.vaildStartTime}} ~ {{item.vaildEndTime}}</view>
-      </view>
-      <view class='right'>
-        <view class="state flex_c_c {{item.mainColor ? 'mainActiveColor' : ''}}">
-          {{item.orderStatus}}
-        </view>
-        <!-- <view class='cancel flex_c_c otherColor'>取消订单></view> -->
-      </view>
-    </view>
+<!--pages/reward/reward.wxml-->
+<view class="swiper-tab">
+  <view class="swiper-tab-list" data-current="0" bindtap="swichNav">
+    <view class="name  {{currentTab==0 ? 'on' : ''}}">订单列表</view>
+  </view>
+
+  <view class="swiper-tab-list" data-current="1" bindtap="swichNav">
+    <view class="name  {{currentTab==1 ? 'on' : ''}}">分销历史</view>
   </view>
 </view>
-<view class='empty' wx:else>
+
+<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight}}rpx" bindchange="bindChange">
+  <swiper-item>
+    <view class="orders" wx:if="{{orderList.length}}">
+      <view class="order_item" wx:for="{{orderList}}" wx:key="{{index}}" data-id='{{item.id}}' catchtap='toOrderDetail'>
+        <view class='order_top flex_b_c'>
+          <view class="time">{{item.createDate}}</view>
+          <view class="price">总价
+            <text class='mainActiveColor'>￥{{item.countPrice}}</text>（微信支付）</view>
+        </view>
+        <view class='order_name'>{{item.productName}}
+          <text>x1</text>
+        </view>
+        <view class='order_desc flex_b_c'>
+          <view class='left'>
+            <view class='cardNumber'>
+              NO:
+              <text>{{item.orderRandomNum}}</text>
+            </view>
+            <view class='validity'>有效期：{{item.vaildStartTime}} ~ {{item.vaildEndTime}}</view>
+          </view>
+          <view class='right'>
+            <view class="state flex_c_c {{item.mainColor ? 'mainActiveColor' : ''}}">
+              {{item.orderStatus}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </swiper-item>
+
+  <swiper-item>
+    <view class="orders" wx:if="{{orderList.length}}">
+      <view class="order_item" wx:for="{{orderList}}" wx:key="{{index}}">
+        <view class='order_top flex_b_c'>
+          <view class="time">{{item.createDate}}</view>
+          <view class="price">奖励金
+            <text class='mainActiveColor'>￥{{item.price}}</text></view>
+        </view>
+        <view class='order_name'>{{item.productName}}</view>
+        <view class='order_desc flex_b_c'>
+          <view class='left'>
+            <view class='cardNumber'>
+              分销人昵称：
+              <text>{{item.userName}}</text>
+            </view>
+            <!-- <view class='validity'>有效期：{{item.vaildStartTime}} ~ {{item.vaildEndTime}}</view> -->
+          </view>
+          <view class='right'>
+            <view class="state normal flex_c_c {{item.mainColor ? 'mainActiveColor' : ''}}">
+              {{item.orderStatus}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </swiper-item>
+</swiper>
+
+<view class='empty' wx:if="{{empty}}">
   <image src='../../images/no_dd@2x.png'></image>
   <view class='text'>暂无订单！</view>
 </view>

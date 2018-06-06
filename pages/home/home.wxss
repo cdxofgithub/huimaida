@@ -7,9 +7,17 @@
   z-index: 100;
   height: 100rpx;
 }
-.header image {
-  width: 192rpx;
+.logo {
+  width: 44rpx;
   height: 44rpx;
+}
+.logo image {
+  width: 100%;
+  height: 100%;
+}
+.logo_name {
+  font-size: 32rpx;
+  margin-left: 10rpx;
 }
 .cities {
   margin-left: 24rpx; 
@@ -92,7 +100,7 @@
   overflow: hidden;
 }
 .price {
-  padding: 40rpx 30rpx 30rpx;
+  padding: 30rpx 30rpx 30rpx;
 }
 .price .new_price {
   font-size: 34rpx;
@@ -115,4 +123,10 @@
   color: #fff;
   font-size: 24rpx;
   text-align: center;
+}
+.noMore {
+  padding: 10rpx 0 20rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color: #8a8a8a;
 }

@@ -9,7 +9,7 @@
   </view>
   <view class="house">
     <view class='house_img'>
-      <image lazy-load="true" src='{{url}}{{detail.mainPic}}'></image>
+      <image lazy-load="true" src='{{url}}{{detail.mainPic}}' catchtap='previewImage'></image>
     </view>
     <view class='house_name'>{{detail.subContent}}
     </view>
@@ -47,7 +47,7 @@
       </view>
     </view>
   </view>
-  <view class='info productDetails'>
+  <view class='info productDetails' wx:if="{{article_a}}">
     <view class='title flex_c_c'>
       <view class='heng_xian'></view>
       <view class='tit'>产品详情</view>
@@ -57,7 +57,7 @@
       <view class='content_item'><template is="wxParse" data="{{wxParseData:article_1.nodes}}"/></view>
     </view>
   </view>
-  <!-- <view class='info productDetails'>
+   <view class='info productDetails' wx:if="{{article_b}}">
     <view class='title flex_c_c'>
       <view class='heng_xian'></view>
       <view class='tit'>购买须知</view>
@@ -67,7 +67,7 @@
       <view class='content_item'><template is="wxParse" data="{{wxParseData:article_2.nodes}}"/></view>
     </view>
   </view>
-  <view class='info productDetails'>
+  <view class='info productDetails' wx:if="{{article_c}}">
     <view class='title flex_c_c'>
       <view class='heng_xian'></view>
       <view class='tit'>套餐详情</view>
@@ -76,8 +76,8 @@
     <view class='product_content'>
       <view class='content_item'><template is="wxParse" data="{{wxParseData:article_3.nodes}}"/></view>
     </view>
-  </view> -->
-  <view class='info otherRecommend'>
+  </view>
+  <!-- <view class='info otherRecommend'>
     <view class='name'>其他热销推荐</view>
     <view class="recommend_item padding_t_b_20_b_b_1 flex_b_c">
       <view class='img'>
@@ -91,7 +91,7 @@
         </view>
       </view>
     </view>
-  </view>
+  </view>  -->
   <view class='footer flex_l_c'>
     <view class='left'>
       <text class='nowPrice mainActiveColor'>￥{{detail.salePrice}}</text>

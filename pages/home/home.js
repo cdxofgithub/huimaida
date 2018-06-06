@@ -18,7 +18,6 @@ Page({
     cities: [
       {
         city: '海口',
-        city_num: 1,
         index: 0
       }
     ],
@@ -26,7 +25,8 @@ Page({
     currType: 1,
     url: '',
     goodList: [],  //产品列表
-    refresh: false,   //是否允许下拉
+    refresh: true,   //是否允许上拉
+    noMore: false
   },
   toMyOrder: function () {
     wx.navigateTo({
@@ -46,7 +46,7 @@ Page({
       type: curr,
       currType: currType
     })
-    this.getGoodList()
+    this.getGoodList(true)
   },
   //选择价格
   choosePrice: function (e) {
@@ -62,14 +62,16 @@ Page({
         currType: 3
       })
     }
-    this.getGoodList()
+    this.getGoodList(true)
   },
   // 点击高亮
   selectCity: function(e) {
     let index = e.currentTarget.dataset.index
     this.setData({
-      currSelectCity: index
+      currSelectCity: index,
+      showCities: false
     })
+    this.getGoodList(true)
   },
   // 展开城市
   showCities: function () {
@@ -91,7 +93,19 @@ Page({
     })
   },
   //加载商品列表
-  getGoodList: function () {
+  //overloaded 切换listFlag是否重载 start, size
+  //top 上拉刷新
+  getGoodList: function (overloaded) {
+    this.setData({
+      noMore: false
+    })
+    if (overloaded) {
+      this.setData({
+        start: 0,
+        size: 10,
+        goodList: [],
+      })
+    }
     let currType = this.data.currType
     let that = this
     let data = {
@@ -99,6 +113,7 @@ Page({
       size: that.data.size,
       listFlag: currType
     }
+    console.log(data)
     wx.showLoading({
       title: '加载中...',
     })
@@ -106,52 +121,23 @@ Page({
     app.utils.request(url, JSON.stringify(data), 'POST', function (res) {
       wx.hideLoading()
       var res = res.data.data.products
+      if (res.length < that.data.size) {
+        that.setData({
+          noMore: true,
+          refresh: false
+        })
+      } else {
+        that.setData({
+          noMore: false,
+          refresh: true
+        })
+      }
       let goodList = that.data.goodList.concat(res)
       that.setData({
         goodList: goodList
       })
+      
     })
-  },
-  // 检测授权状态
-  checkSettingStatu: function (cb) {
-    // 是否为空对象
-    function isEmptyObject(e) {
-      var t;
-      for (t in e)
-        return !1;
-      return !0
-    }
-    var that = this;
-    // 判断是否是第一次授权，非第一次授权且授权失败则进行提醒
-    wx.getSetting({
-      success: function success(res) {
-        console.log(res)
-        var authSetting = res.authSetting;
-        if (isEmptyObject(authSetting)) {
-          console.log('首次授权');
-        } else {
-          // 没有授权的提醒
-          if (authSetting['scope.userInfo'] == false) {
-            wx.showModal({
-              title: '用户未授权',
-              content: '如需正常使用校园小叮当的服务功能，请按确定并在授权管理中选中“用户信息”，最后再重新进入小程序即可正常使用。',
-              success: function (res) {
-                if (res.confirm) {
-                  wx.openSetting({
-                    success: function success(res) {
-
-                    }
-                  });
-                }
-              },
-              fail: function () {
-                return
-              }
-            })
-          }
-        }
-      }
-    });
   },
 
   // 自定义弹框
@@ -215,8 +201,6 @@ Page({
   },
 
   userinfo: function (e) {
-    console.log(e)
-    console.log(e.detail.userInfo.nickName)
     var url = app.utils.URL + '/f/api/user/updateUserInfo'
     var data = {
       nickName: e.detail.userInfo.nickName,
@@ -297,7 +281,15 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this.getGoodList('down')
+    console.log('上拉触底了')
+    if (this.data.refresh) {
+      let start = this.data.start + this.data.size
+      this.setData({
+        start: start
+      })
+      this.getGoodList(false)
+    }
+
   },
 
   /**
