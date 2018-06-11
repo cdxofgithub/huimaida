@@ -2,6 +2,9 @@
 <import src="../../toast/toast.wxml" />
 <template is="wxToast" data="{{...wxToastConfig}}"></template>
 <view>
+  <view class='hongbao flex_b_0'>
+    <view class='desc'>分享福利：分享产品，您的朋友 <text class='mainActiveColor'>购买/消费</text>成功后将获得现金奖励，次日发放至您的微信零钱钱包</view>
+  </view>
   <view class='header flex_b_c'>
     <view class='left flex_l_c'>
       <view class='logo'><image src='../../images/logo.png'></image></view>
@@ -35,9 +38,17 @@
     <view class='item' catchtap='toDeatil' wx:for="{{goodList}}" wx:key="{{index}}" data-id="{{item.id}}">
       <image lazy-load="true" src='{{url}}{{item.mainPic}}'></image>
       <view class='content'>{{item.subContent}}</view>
-      <view class='price'>
-        <text class='new_price mainActiveColor'>￥{{item.salePrice}}</text>
-        <text class='old_price mainIconColor'>￥{{item.originPrice}}</text>
+      <view class='price flex_a_c'>
+        <view>
+          <text class='new_price mainActiveColor'>￥{{item.salePrice}}</text>
+          <text class='old_price mainIconColor'>￥{{item.originPrice}}</text>
+        </view>
+        <view class='flex_l_c jiangli'>
+          <view class='img flex_0_c'><image src='../../images/money.png'></image></view>
+          奖励￥ <text class='mainActiveColor'>{{item.sharePrice}}</text> 元
+        </view>
+        <view class='shengyu'>剩余 <text class='mainActiveColor'>{{item.browserTimes}}</text> 份</view>
+        
       </view>
       <view class='city'>海口</view>
     </view>

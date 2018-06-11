@@ -1,12 +1,6 @@
 <import src="../../wxParse/wxParse.wxml"/>
 
 <view class='page' wx:if="{{detail}}">
-  <view class='hongbao flex_b_0' wx:if="{{again}}" catchtap='createPoster'>
-    <view class='hongbao_img'>
-      <image mode='widthFix' src='../../images/hongbao_2.png'></image>
-    </view>
-    <view class='desc'>会员福利：分享该产品,您的朋友<text class='keyColor'>消费</text>成功后,您将获得<text class='keyColor'>0.05元</text>,次日发放至您的微信零钱包【此消息仅您可见喔~】。<text class='keyColor'>点此</text>生成您的分享海报。</view>
-  </view>
   <view class="house">
     <view class='house_img'>
       <image lazy-load="true" src='{{url}}{{detail.mainPic}}' catchtap='previewImage'></image>
@@ -47,7 +41,7 @@
       </view>
     </view>
   </view>
-  <view class='info productDetails' wx:if="{{article_a}}">
+  <view class='info productDetails' wx:if="{{article_1}}">
     <view class='title flex_c_c'>
       <view class='heng_xian'></view>
       <view class='tit'>产品详情</view>
@@ -57,7 +51,7 @@
       <view class='content_item'><template is="wxParse" data="{{wxParseData:article_1.nodes}}"/></view>
     </view>
   </view>
-   <view class='info productDetails' wx:if="{{article_b}}">
+   <view class='info productDetails' wx:if="{{article_2}}">
     <view class='title flex_c_c'>
       <view class='heng_xian'></view>
       <view class='tit'>购买须知</view>
@@ -67,7 +61,7 @@
       <view class='content_item'><template is="wxParse" data="{{wxParseData:article_2.nodes}}"/></view>
     </view>
   </view>
-  <view class='info productDetails' wx:if="{{article_c}}">
+  <view class='info productDetails' wx:if="{{article_3}}">
     <view class='title flex_c_c'>
       <view class='heng_xian'></view>
       <view class='tit'>套餐详情</view>

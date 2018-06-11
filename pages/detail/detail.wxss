@@ -3,26 +3,6 @@
   padding-bottom: 110rpx;
   position: relative;
 }
-.hongbao {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: #fef9e6;
-}
-.hongbao .hongbao_img {
-  width: 110rpx;
-  display: flex;
-  align-items: flex-end;
-  margin-right: 20rpx;
-}
-.hongbao_img image {
-  width: 100%;
-}
-.hongbao .desc {
-  flex: 1;
-  padding: 20rpx 30rpx 20rpx 0;
-  font-size: 26rpx;
-}
 .house_img {
   height: 500rpx;
 }
@@ -108,7 +88,7 @@
   font-size: 28rpx;
 }
 .product_content .content_item {
-  width: 100%;
+  line-height: 1.5;
 }
 .product_content .content_item image {
   max-width: 100%;

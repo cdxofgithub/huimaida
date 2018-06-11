@@ -96,14 +96,12 @@ Page({
   //overloaded 切换listFlag是否重载 start, size
   //top 上拉刷新
   getGoodList: function (overloaded) {
-    this.setData({
-      noMore: false
-    })
     if (overloaded) {
       this.setData({
         start: 0,
         size: 10,
         goodList: [],
+        noMore: false
       })
     }
     let currType = this.data.currType
