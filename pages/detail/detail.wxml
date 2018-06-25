@@ -3,7 +3,7 @@
 <view class='page' wx:if="{{detail}}">
   <view class="house">
     <view class='house_img'>
-      <image lazy-load="true" src='{{url}}{{detail.mainPic}}' catchtap='previewImage'></image>
+      <image lazy-load="true" src='{{detail.mainPic}}' catchtap='previewImage'></image>
     </view>
     <view class='house_name'>{{detail.subContent}}
     </view>
@@ -11,7 +11,7 @@
   <view class='sales'>
     <view class='sale flex_l_c'>
       <image src='../../images/sale_icon.png'></image>
-      <text>销量破百</text>
+      <text>{{detail.saleNumber}}</text>
     </view>
     <view class='supports flex_l_c'>
       <view class='support flex_l_c' wx:for="{{tags}}" wx:key="{{index}}">

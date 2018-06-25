@@ -12,9 +12,6 @@
   background: #fff;
   padding: 30rpx;
 }
-.title {
-  margin-bottom: 20rpx;
-}
 .good_detail {
   padding: 40rpx 0;
   border-bottom: 1rpx dashed #d8d8d8;

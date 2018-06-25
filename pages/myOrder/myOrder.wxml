@@ -18,9 +18,13 @@
           <view class="price">总价
             <text class='mainActiveColor'>￥{{item.countPrice}}</text>（微信支付）</view>
         </view>
-        <view class='order_name'>{{item.productName}}
-          <text>x1</text>
+        <view class='flex_b_c'>
+          <view class='order_name'>{{item.productName}}</view>
+          <view class='order_name'>{{item.key || '默认套餐'}}
+            <text>x1</text>
+          </view>
         </view>
+
         <view class='order_desc flex_b_c'>
           <view class='left'>
             <view class='cardNumber'>
@@ -45,7 +49,8 @@
         <view class='order_top flex_b_c'>
           <view class="time">{{item.createDate}}</view>
           <view class="price">奖励金
-            <text class='mainActiveColor'>￥{{item.price}}</text></view>
+            <text class='mainActiveColor'>￥{{item.price}}</text>
+          </view>
         </view>
         <view class='order_name'>{{item.productName}}</view>
         <view class='order_desc flex_b_c'>

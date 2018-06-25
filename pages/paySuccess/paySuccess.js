@@ -42,7 +42,8 @@ Page({
     app.utils.request(url, JSON.stringify(data), 'POST', function (res) {
       var res = res.data.data
       console.log(res)
-      let qrPath = app.utils.URL + res.qrPath
+      // let qrPath = app.utils.URL + res.qrPath
+      let qrPath = res.qrPath
       let localPath
       that.setData({
         qrPath: qrPath
@@ -294,13 +295,13 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function (res) {
-    console.log(app.utils.URL + this.data.orderDetail.mainPic)
     if (res.from === 'button') {
       // 来自页面内转发按钮
       console.log(res.target)
     }
     return {
-      imageUrl: app.utils.URL + this.data.orderDetail.mainPic,
+      // imageUrl: app.utils.URL + this.data.orderDetail.mainPic,
+      imageUrl: this.data.orderDetail.mainPic,
       title: this.data.orderDetail.productName,
       path: '/pages/detail/detail?parentId=' + this.data.orderDetail.parentId + '&productId=' + this.data.orderDetail.productId
     }

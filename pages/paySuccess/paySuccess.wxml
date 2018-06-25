@@ -7,7 +7,7 @@
     <view class='title'>{{orderDetail.productName}}</view>
     <view class='good_detail'>
       <view class='good flex_l_c'>
-        <view class='name'>{{orderDetail.productName}}</view>
+        <view class='name'>{{orderDetail.key || '默认套餐'}}</view>
         <view class='num'>x{{orderDetail.num}}</view>
       </view>
       <view class='validity'>有效期{{orderDetail.vaildStartTime}} 至 {{orderDetail.vaildEndTime}}</view>

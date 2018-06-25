@@ -10,7 +10,21 @@ Page({
     num: 1,
     totalPrice: 0,
     phone: '',
-    parentId: ''
+    parentId: '',
+    index: 0,
+    array: [],
+    attribute: [],
+    attributeId: '',   //套餐id
+  },
+  bindPickerChange: function (e) {
+    let that = this
+    let index = e.detail.value
+    that.setData({
+      index: index,
+      price: that.data.attribute[index].value,
+      attributeId: that.data.attribute[index].id
+    })
+    that.computedValue()
   },
   reduce: function() {
     let num = this.data.num
@@ -48,8 +62,10 @@ Page({
         accesstoken: wx.getStorageSync('accesstoken'),
         num: that.data.num,
         phone: that.data.phone,
-        parentId: that.data.parentId
+        parentId: that.data.parentId,
+        attributeId: that.data.attributeId
       }
+      console.log(data)
       wx.showLoading({
         title: '加载中...',
       })
@@ -120,11 +136,25 @@ Page({
    */
   onLoad: function (options) {
     let data = JSON.parse(options.data);
+    console.log(data)
+    let arr = [{
+      id: '',
+      key: '默认套餐',
+      value: data.nowPrice
+    }]
+    let array = []
+    let attribute = arr.concat(data.attribute)
+    attribute.forEach(function(e) {
+      array.push(e.key)
+    })
     this.setData({
       content: data.content,
       price: data.nowPrice,
       id: data.productId,
+      attribute: attribute,
+      array: array
     })
+    
     if (data.parentId) {
       this.setData({
         parentId: data.parentId

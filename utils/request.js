@@ -29,7 +29,7 @@ export const request = (url, data, method, callback) => {
             }
           }
         })
-      } else if (res.data.status == '0001' || res.data.status == '0002' || res.data.status == '0003' || res.data.status == '0004') {
+      } else if (res.data.status == '1' || res.data.status == '0001' || res.data.status == '0002' || res.data.status == '0003' || res.data.status == '0004') {
         wxToast({
           title: res.data.message
         })
@@ -129,6 +129,7 @@ function login() {
   });
 }
 
-export const URL = 'http://1t896460i2.iask.in:21058'
+// export const URL = 'http://1t896460i2.iask.in:21058'
+export const URL = 'https://www.huimaida.com/hmd' 
 
 

@@ -6,6 +6,14 @@
 </view>
 <view class='pay_detail'>
   <view class='pay_item flex_b_c'>
+    <view class='left'>选择套餐</view>
+    <picker class='right' bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+      <view class="picker">
+        当前选择：{{array[index]}}
+      </view>
+    </picker>
+  </view>
+  <view class='pay_item flex_b_c'>
     <view class='left'>单价</view>
     <view class='right'>￥{{price}}</view>
   </view>
