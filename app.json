@@ -9,6 +9,8 @@
     "pages/authorization/authorization",
     "pages/orderDetail/orderDetail",
     "pages/paySuccess/paySuccess",
+    "pages/charge/charge",
+    "pages/verification/verification",
     "pages/test/test"
   ],
   "window":{

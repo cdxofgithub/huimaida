@@ -1,0 +1,21 @@
+/* pages/charge/charge.wxss */
+page {
+  background: #fff;
+}
+.input {
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #ebebeb;
+  font-size: 34rpx;
+  margin-top: 40rpx;
+}
+.charge {
+  width: 90%;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  border-radius: 14rpx;
+  font-size: 38rpx;
+  background: #ff8100;
+  color: #fff;
+  margin: 80rpx auto 0;
+}

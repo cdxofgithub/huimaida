@@ -2,9 +2,9 @@
 <import src="../../toast/toast.wxml" />
 <template is="wxToast" data="{{...wxToastConfig}}"></template>
 <view>
-  <view class='hongbao flex_b_0'  wx:if="{{!showCities}}">
+  <!-- <view class='hongbao flex_b_0'  wx:if="{{!showCities}}">
     <view class='desc'>分享福利：分享产品，您的朋友 <text class='mainActiveColor'>购买/消费</text>成功后将获得现金奖励，次日发放至您的微信零钱钱包</view>
-  </view>
+  </view> -->
   <view class='header flex_b_c'>
     <view class='left flex_l_c'>
       <view class='logo'><image src='../../images/logo.png'></image></view>

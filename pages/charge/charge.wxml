@@ -1,0 +1,6 @@
+<!--pages/charge/charge.wxml-->
+
+<view class='container'>
+  <view class='input'><input placeholder='请输入你的核销码'></input></view>
+  <view class='charge'>核销</view>
+</view>

@@ -10,7 +10,6 @@ page {
   color: #3b3b3b;
   background: #f1f1f1;
 }
-
 .mainColor {
   color: #3b3b3b;
 }

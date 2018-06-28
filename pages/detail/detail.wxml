@@ -1,6 +1,12 @@
 <import src="../../wxParse/wxParse.wxml"/>
 
 <view class='page' wx:if="{{detail}}">
+  <view class='hongbao flex_b_0' catchtap='createPoster'> 
+    <view class='hongbao_img'>
+      <image mode='widthFix' src='../../images/hongbao_2.png'></image>
+    </view>
+    <view class='desc'>分享福利：分享该产品,您的朋友<text class='keyColor'>消费</text>成功后,您将获得<text class='keyColor'>0.05元</text>,次日发放至您的微信零钱包。<text class='keyColor'>点此</text>生成您的分享海报。</view>
+  </view>
   <view class="house">
     <view class='house_img'>
       <image lazy-load="true" src='{{detail.mainPic}}' catchtap='previewImage'></image>
