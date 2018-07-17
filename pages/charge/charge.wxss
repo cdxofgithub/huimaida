@@ -1,13 +1,20 @@
 /* pages/charge/charge.wxss */
+
 page {
   background: #fff;
 }
+
+.container {
+  height: 100%;
+}
+
 .input {
   padding-bottom: 20rpx;
   border-bottom: 1rpx solid #ebebeb;
   font-size: 34rpx;
   margin-top: 40rpx;
 }
+
 .charge {
   width: 90%;
   height: 90rpx;
@@ -18,4 +25,14 @@ page {
   background: #ff8100;
   color: #fff;
   margin: 80rpx auto 0;
+}
+
+.logout {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 40rpx;
+  text-align: center;
+  font-size: 32rpx;
+  text-decoration: underline;
 }

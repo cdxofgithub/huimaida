@@ -1,5 +1,5 @@
 <view wx:if="{{orderDetail}}">
-  <view class='success_iocn f_d_c_c'>
+  <view class='success_iocn f_d_c_c' wx:if="{{isHide}}">
     <image src='../../images/success.png'></image>
     <text>抢购成功</text>
   </view>
@@ -11,13 +11,15 @@
         <view class='num'>x{{orderDetail.num}}</view>
       </view>
       <view class='validity'>有效期{{orderDetail.vaildStartTime}} 至 {{orderDetail.vaildEndTime}}</view>
-      <view class='card_number flex_l_c'>
-        <view class='left f_d_c_c'>
-          <text>券</text>
-          <text>号</text>
+      <view class='cards'>
+        <view class='card_number flex_l_c' wx:for="{{orderDetail.hmdOrderItems}}" wx:for-item="items" wx:key="{{index}}">
+          <view class='left f_d_c_c'>
+            <text>券</text>
+            <text>号</text>
+          </view>
+          <view class='right'>
+            <text>NO:</text> {{items.randomNum}}</view>
         </view>
-        <view class='right'>
-          <text>NO:</text> {{orderDetail.orderRandomNum}}</view>
       </view>
     </view>
     <view class='reality_pay'>实际支付：
@@ -31,7 +33,7 @@
       <view class='desc'>
         会员福利：分享该产品，您的朋友
         <text class='keyColor'>购买</text>成功后，您将获得
-        <text class='keyColor'>{{orderDetail.sharePrice}}元</text>现金奖励，次日发放至您的微信零钱包。
+        <text class='keyColor'>{{orderDetail.sharePrice}}元</text>现金奖励，可提现至您的支付宝账号。
       </view>
       <picker class='shart_btn flex_c_c' bindchange="bindPickerChange" value="{{index}}" range="{{array}}">去分享</picker>
       <!-- <view class='shart_btn flex_c_c' catchtap='share'>去分享</view> -->
@@ -76,13 +78,22 @@
   <view class="drawer_title">卡片分享</view>
   <view class="drawer_content">
     <view class='rule'>分享提示：</view>
-    <view class='info'>● 点击去分享，可分享至相关好友或者群中；</view>
+    <view class='info '>● 点击去分享，可分享至相关好友或者群中；</view>
     <view class='info'>● 朋友购买后，您可获得相应奖金，次日发放。</view>
   </view>
   <!-- <button class="btn_ok" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" bindtap="powerDrawer" data-statu="close">确定</button> -->
   <button class="btn_ok" open-type="share" bindtap="powerDrawer" data-statu="close">去分享</button>
 </view>
 
+<view class='attention' wx:if="{{showCode}}">
+  <image src='../../images/huimaida.jpg'></image>
+  <view class='desc'>
+    <view>关注
+      <text class='mainActiveColor'>"惠麦达"</text>公众号</view>
+    <view>可一键查询订单和赏金哦~</view>
+  </view>
+</view>
+<view class='shade' wx:if="{{showCode}}" catchtap='closeCode'></view>
 <!-- 海报生成 -->
 
 <!-- 画布大小按需定制 这里我按照背景图的尺寸定的  -->

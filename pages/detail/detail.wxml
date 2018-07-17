@@ -1,11 +1,14 @@
-<import src="../../wxParse/wxParse.wxml"/>
+<import src="../../wxParse/wxParse.wxml" />
 
 <view class='page' wx:if="{{detail}}">
-  <view class='hongbao flex_b_0' catchtap='createPoster'> 
+  <view class='hongbao flex_b_0'>
     <view class='hongbao_img'>
       <image mode='widthFix' src='../../images/hongbao_2.png'></image>
     </view>
-    <view class='desc'>分享福利：分享该产品,您的朋友<text class='keyColor'>消费</text>成功后,您将获得<text class='keyColor'>0.05元</text>,次日发放至您的微信零钱包。<text class='keyColor'>点此</text>生成您的分享海报。</view>
+    <picker class='desc' bindchange="bindPickerChange" value="{{index}}" range="{{array}}">分享福利：分享该产品,您的朋友
+      <text class='keyColor'>消费</text>成功后,您将获得
+      <text class='keyColor'>{{detail.sharePrice}}元</text>,可在公众号【惠麦达】内提现至您的支付宝。
+      <text class='keyColor'>点此</text>生成您的分享海报。</picker>
   </view>
   <view class="house">
     <view class='house_img'>
@@ -54,17 +57,9 @@
       <view class='heng_xian'></view>
     </view>
     <view class='product_content'>
-      <view class='content_item'><template is="wxParse" data="{{wxParseData:article_1.nodes}}"/></view>
-    </view>
-  </view>
-   <view class='info productDetails' wx:if="{{article_2}}">
-    <view class='title flex_c_c'>
-      <view class='heng_xian'></view>
-      <view class='tit'>购买须知</view>
-      <view class='heng_xian'></view>
-    </view>
-    <view class='product_content'>
-      <view class='content_item'><template is="wxParse" data="{{wxParseData:article_2.nodes}}"/></view>
+      <view class='content_item'>
+        <template is="wxParse" data="{{wxParseData:article_1.nodes}}" />
+      </view>
     </view>
   </view>
   <view class='info productDetails' wx:if="{{article_3}}">
@@ -74,7 +69,21 @@
       <view class='heng_xian'></view>
     </view>
     <view class='product_content'>
-      <view class='content_item'><template is="wxParse" data="{{wxParseData:article_3.nodes}}"/></view>
+      <view class='content_item'>
+        <template is="wxParse" data="{{wxParseData:article_3.nodes}}" />
+      </view>
+    </view>
+  </view>
+  <view class='info productDetails' wx:if="{{article_2}}">
+    <view class='title flex_c_c'>
+      <view class='heng_xian'></view>
+      <view class='tit'>购买须知</view>
+      <view class='heng_xian'></view>
+    </view>
+    <view class='product_content'>
+      <view class='content_item'>
+        <template is="wxParse" data="{{wxParseData:article_2.nodes}}" />
+      </view>
     </view>
   </view>
   <!-- <view class='info otherRecommend'>
@@ -102,19 +111,35 @@
 </view>
 
 
+<!-- 获取手机号码自定义弹框 -->
+<view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
+<!--content-->
+<!--使用animation属性指定需要执行的动画-->
+<view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">
+
+  <!--drawer content-->
+  <view class="drawer_title">卡片分享</view>
+  <view class="drawer_content">
+    <view class='rule'>分享提示：</view>
+    <view class='info'>● 点击去分享，可分享至相关好友或者群中；</view>
+    <view class='info'>● 朋友购买后，您可获得相应奖金，次日发放。</view>
+  </view>
+  <!-- <button class="btn_ok" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" bindtap="powerDrawer" data-statu="close">确定</button> -->
+  <button class="btn_ok" open-type="share" bindtap="powerDrawer" data-statu="close">去分享</button>
+</view>
+
 <!-- 海报生成 -->
 
 <!-- 画布大小按需定制 这里我按照背景图的尺寸定的  -->
 <canvas canvas-id="shareImg" style="width:545px;height:900px"></canvas>
-  
+
 <!-- 预览区域  -->
-<view hidden='{{hidden}}' class='preview'>
+<view hidden='{{hidden}}' class='preview' catchtap='toggleHidden'>
   <image src='{{prurl}}' mode='widthFix'></image>
   <button type='primary' size='mini' bindtap='save'>保存分享图</button>
   <view class='share_info f_d_c_c'>
     <view class='share_item'>保存图片后，可分享至微信群或朋友圈。</view>
-    <view class='share_item'>当您的好友消费成功后，您将获得<text class='keyColor'>￥0.05</text>现金奖励噢~</view>
+    <view class='share_item'>当您的好友消费成功后，您将获得
+      <text class='keyColor'>￥{{detail.sharePrice}} </text>现金奖励噢~</view>
   </view>
 </view>
-
-<!-- <button class='share' type='primary' bindtap='share'>生成分享图</button> -->

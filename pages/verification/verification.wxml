@@ -6,13 +6,13 @@
   </view>
   <view class='input account flex_l_c'>
     <view class='left'>账号：</view>
-    <view class='right'><input type='text' placeholder='请输入账号'></input></view>
+    <view class='right'><input type='text' placeholder='请输入账号' bindinput="accountInput"></input></view>
   </view>
   <view class='input password flex_l_c'>
     <view class='left'>密码：</view>
-    <view class='right'><input type='password' placeholder='请输入密码'></input></view>
+    <view class='right'><input type='password' placeholder='请输入密码' bindinput="passwordInput"></input></view>
   </view>
   <!-- <view class='free mainActiveColor'>30天免登陆</view> -->
-  <view class='login'>登录</view>
+  <view class='login' catchtap='login'>登录</view>
 </view>
 

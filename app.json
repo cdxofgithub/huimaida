@@ -1,6 +1,5 @@
 {
-  "pages":[
-    
+  "pages": [
     "pages/home/home",
     "pages/index/index",
     "pages/myOrder/myOrder",
@@ -9,15 +8,15 @@
     "pages/authorization/authorization",
     "pages/orderDetail/orderDetail",
     "pages/paySuccess/paySuccess",
-    "pages/charge/charge",
     "pages/verification/verification",
-    "pages/test/test"
+    "pages/charge/charge",
+    "pages/deposit/deposit"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
   "networkTimeout": {
     "request": 20000

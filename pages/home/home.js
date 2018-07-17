@@ -206,6 +206,8 @@ Page({
       gender: e.detail.userInfo.gender,
       accesstoken: wx.getStorageSync('accesstoken')
     }
+    wx.setStorageSync('nickName', e.detail.userInfo.nickName)
+    wx.setStorageSync('avatarUrl', e.detail.userInfo.avatarUrl)
     app.utils.request(url, JSON.stringify(data), 'POST', function (res) {
       if (res.data.status == '0') {
         app.wxToast({

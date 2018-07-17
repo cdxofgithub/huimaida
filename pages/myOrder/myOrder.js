@@ -45,6 +45,9 @@ Page({
       } else {
         empty = false
       }
+      // let winHeight = res.orders.forEach(function(e) {
+      //   if (e.)
+      // })
       let winHeight = res.orders.length * 400 + res.orders.length * 20
       that.setData({
         orderList: res.orders,
@@ -74,14 +77,14 @@ Page({
       console.log(res)
       res.orders.forEach(function (e) {
         if (e.status == 0) {
-          e.orderStatus = ' 未处理'
+          e.orderStatus = '未提现'
         } else if (e.status == 1) {
-          e.orderStatus = '处理中'
+          e.orderStatus = '提现中'
         } else if (e.status == 2) {
-          e.orderStatus = '处理成功',
+          e.orderStatus = '已提现',
             e.mainColor = true
         } else if (e.status == 3) {
-          e.orderStatus = '处理失败'
+          e.orderStatus = '提现失败'
         }
       })
       let empty;
@@ -90,26 +93,32 @@ Page({
       } else {
         empty = false
       }
-      let winHeight = res.orders.length * 400 + res.orders.length * 20
+      // let winHeight = res.orders.length * 400 + res.orders.length * 20 + 90
       that.setData({
         orderList: res.orders,
-        winHeight: winHeight,
+        // winHeight: winHeight,
         empty: empty
       })
+    })
+  },
+  //去提现
+  deposit: function() {
+    wx.navigateTo({
+      url: '../deposit/deposit',
     })
   },
   /** 
      * 滑动切换tab 
      */
-  bindChange: function (e) {
-    var that = this;
-    that.setData({ currentTab: e.detail.current });
-    if (that.data.currentTab == 0) {
-      that.getOrderList()
-    } else {
-      that.getDistribution()
-    }
-  },
+  // bindChange: function (e) {
+  //   var that = this;
+  //   that.setData({ currentTab: e.detail.current });
+  //   if (that.data.currentTab == 0) {
+  //     that.getOrderList()
+  //   } else {
+  //     that.getDistribution()
+  //   }
+  // },
   /** 
    * 点击tab切换 
    */
@@ -120,6 +129,11 @@ Page({
       this.setData({
         currentTab: e.currentTarget.dataset.current
       })
+      if (this.data.currentTab == 0) {
+        this.getOrderList()
+      } else {
+        this.getDistribution()
+      }
     }
     // if (this.data.currentTab == 0) {
     //   this.getOrderList()
@@ -131,13 +145,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
     this.getOrderList()
   },
   toOrderDetail: function(e) {
     let id = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '../paySuccess/paySuccess?orderId=' + id,
+      url: '../paySuccess/paySuccess?orderId=' + id + '&isHide=1',
     })
   },
   /**

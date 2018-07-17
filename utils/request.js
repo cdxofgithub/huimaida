@@ -1,5 +1,4 @@
 var wxToast = require('../toast/toast.js')
-
 export const request = (url, data, method, callback) => {
   method = method.toUpperCase()
   wx.request({
@@ -30,21 +29,23 @@ export const request = (url, data, method, callback) => {
           }
         })
       } else if (res.data.status == '1' || res.data.status == '0001' || res.data.status == '0002' || res.data.status == '0003' || res.data.status == '0004') {
-        wxToast({
-          title: res.data.message
-        })
         wx.hideLoading()
+        console.log(res.data.message)
+        wx.showToast({
+          icon: 'none',
+          title: res.data.message,
+        })
       } else {
         return typeof callback == "function" && callback(res)
       }
-      return typeof callback == "function" && callback(res)
+      // return typeof callback == "function" && callback(res)
     },
     fail: function (err) {
+      wx.hideLoading()
       wx.stopPullDownRefresh()
       wxToast({
         title: '网络超时'
       })
-      wx.hideLoading()
     }
   })
 }
@@ -64,11 +65,14 @@ function login() {
           if (resa.data.status == '0') {
             wx.getUserInfo({
               success: function (resp) {
+                console.log('成功')
+                console.log(resp)
                 var userInfo = resp.userInfo //用户基本信息
                 var nickName = userInfo.nickName //用户名
                 var avatarUrl = userInfo.avatarUrl //头像链接
                 var gender = userInfo.gender //性别 0：未知、1：男、2：女
-
+                wx.setStorageSync('nickName', userInfo.nickName)
+                wx.setStorageSync('avatarUrl', userInfo.avatarUrl)
                 //更新用户信息
                 var url = URL + '/f/api/user/updateUserInfo'
                 var data = {
@@ -81,8 +85,10 @@ function login() {
                   wx.hideLoading()
                   if (res.data.status == '0') {
                     wx.setStorageSync('accesstoken', resa.data.data.accesstoken)
-                    wxToast({
-                      title: '登录成功'
+                    console.log('登录成功')
+                    wx.showToast({
+                      icon: 'none',
+                      title: '登录成功',
                     })
                     //获取页面栈
                     var pages = getCurrentPages();
@@ -102,10 +108,21 @@ function login() {
                 })
               },
               fail: res => {
+                console.log('失败')
                 wx.hideLoading()
-                wxToast({
-                  title: '登录需用户返回首页进行授权'
+                wx.showToast({
+                  title: '',
                 })
+                wx.showToast({
+                  icon: 'none',
+                  title: '需返回首页完成授权登录！',
+                  duration: 2000
+                })
+                setTimeout(function() {
+                  wx.redirectTo({
+                    url: '../home/home',
+                  })
+                }, 2000)
               }
             })
           } else {
@@ -116,8 +133,9 @@ function login() {
         })
       } else {
         console.log('获取用户登录态失败！' + res.errMsg)
-        wxToast({
-          title: res.errMsg
+        wx.showToast({
+          icon: 'none',
+          title: res.errMsg,
         })
       }
     },

@@ -6,7 +6,6 @@
   background: #fff;
   font-size: 28rpx;
   box-sizing: border-box;
-  height: 400rpx;
 }
 .order_item .order_top {
   padding: 30rpx 0;
@@ -102,4 +101,9 @@
 
 .swiper-box {
   margin-top: 98rpx;
+}
+.footer {
+  font-size: 34rpx;
+  background: #ff8100;
+  color: #fff;
 }

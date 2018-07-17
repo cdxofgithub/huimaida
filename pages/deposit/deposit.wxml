@@ -1,0 +1,17 @@
+<!--pages/deposit/deposit.wxml-->
+<view class='container'>
+  <view class='title'>惠麦达</view>
+  <view class='img'>
+    <image src='../../images/logo.png'></image>
+  </view>
+  <view class='input account flex_l_c'>
+    <view class='left'>账号：</view>
+    <view class='right'><input type='text' placeholder='请输入支付宝账号' value='{{accountData}}' bindinput="accountInput"></input></view>
+  </view>
+  <view class='input password flex_l_c'>
+    <view class='left'>姓名：</view>
+    <view class='right'><input type='text' placeholder='请输入支付宝绑定姓名' value='{{passwordData}}' bindinput="passwordInput"></input></view>
+  </view>
+  <!-- <view class='free mainActiveColor'>30天免登陆</view> -->
+  <view class='login' catchtap='login'>全部提现</view>
+</view>

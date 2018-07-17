@@ -47,7 +47,7 @@
           <view class='img flex_0_c'><image src='../../images/money.png'></image></view>
           奖励￥ <text class='mainActiveColor'>{{item.sharePrice}}</text> 元
         </view>
-        <view class='shengyu'>剩余 <text class='mainActiveColor'>{{item.browserTimes}}</text> 份</view>
+        <view class='shengyu'>剩余 <text class='mainActiveColor'>{{item.productNum}}</text> 份</view>
         
       </view>
       <view class='city'>海口</view>
@@ -68,7 +68,7 @@
   <view class="drawer_title">请登录</view>
   <view class="drawer_content">
     <view class='rule'>登录提示：</view>
-    <view class='info'>● 请点击下方的登录按钮；</view>
+    <view class='info'>● 新用户需完成登录方可正常操作；</view>
     <view class='info'>● 在弹出的授权提示中选择允许完成登录。</view>
   </view>
   <!-- <button class="btn_ok" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" bindtap="powerDrawer" data-statu="close">确定</button> -->

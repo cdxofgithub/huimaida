@@ -52,13 +52,14 @@ Page({
   },
   pay: function() {
     let that = this
-    if (!(/^1[345678]\d{9}$/.test(that.data.phone))) {
+    if (!(/^1[123456789]\d{9}$/.test(that.data.phone))) {
       app.wxToast({
         title: '号码格式有误！'
       })
     } else {
       let data = {
         productId: that.data.id,
+        
         accesstoken: wx.getStorageSync('accesstoken'),
         num: that.data.num,
         phone: that.data.phone,
@@ -117,7 +118,9 @@ Page({
     })
   },
   getPhone: function() {
-    wx.showLoading()
+    wx.showLoading({
+      title: '加载中...',
+    })
     let that = this
     let data = {
       accesstoken: wx.getStorageSync('accesstoken')
