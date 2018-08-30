@@ -200,16 +200,18 @@ Page({
 
   userinfo: function (e) {
     var url = app.utils.URL + '/f/api/user/updateUserInfo'
+    console.log(app.globalData.accesstoken)
     var data = {
       nickName: e.detail.userInfo.nickName,
       avatarUrl: e.detail.userInfo.avatarUrl,
       gender: e.detail.userInfo.gender,
-      accesstoken: wx.getStorageSync('accesstoken')
+      accesstoken: app.globalData.accesstoken
     }
     wx.setStorageSync('nickName', e.detail.userInfo.nickName)
     wx.setStorageSync('avatarUrl', e.detail.userInfo.avatarUrl)
     app.utils.request(url, JSON.stringify(data), 'POST', function (res) {
       if (res.data.status == '0') {
+        wx.setStorageSync('accesstoken', app.globalData.accesstoken)
         app.wxToast({
           title: '登录成功'
         })

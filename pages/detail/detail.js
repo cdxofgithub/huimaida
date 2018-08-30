@@ -136,9 +136,8 @@ Page({
       let validStartTime = that.data.detail.validStartTime
       let vaildEndTime = that.data.detail.vaildEndTime
       let saleNumber = that.data.detail.saleNumber
-      let avatarUrl = wx.getStorageSync('avatarUrl')
-      let nickName = wx.getStorageSync('nickName')
-
+      let avatarUrl = wx.getStorageSync('avatarUrl') ? wx.getStorageSync('avatarUrl') : '../../images/logo.png'
+      let nickName = wx.getStorageSync('nickName') ? wx.getStorageSync('nickName') : ''
 
       let promise1 = new Promise(function (resolve, reject) {
         wx.getImageInfo({
@@ -387,6 +386,24 @@ Page({
         detail: res.data.detail,
         tags: tags
       })
+      // let avatarUrl = wx.getStorageSync('avatarUrl')
+      // let nickName = wx.getStorageSync('nickName')
+      // if (avatarUrl || nickName) {
+      //   return;
+      // } else {
+      //   wx.showModal({
+      //     title: '未登录',
+      //     content: '需返回首页完成授权登录！',
+      //     showCancel: false,
+      //     success: function (res) {
+      //       if (res.confirm) {
+      //         wx.redirectTo({
+      //           url: '../home/home',
+      //         })
+      //       }
+      //     }
+      //   })
+      // }
       /**
       * WxParse.wxParse(bindName , type, data, target,imagePadding)
       * 1.bindName绑定的数据名(必填)
@@ -456,28 +473,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // let avatarUrl = wx.getStorageSync('avatarUrl')
-    // let nickName = wx.getStorageSync('nickName')
-    // if (avatarUrl && nickName) {
-    //   return;
-    // } else {
-    //   wx.showModal({
-    //     title: '请先登录',
-    //     content: '完成登录后方可正常使用！',
-    //     success: function (res) {
-    //       if (res.confirm) {
-    //         wx.redirectTo({
-    //           url: '../home/home',
-    //         })
-    //       } else if (res.cancel) {
-    //         wx.showToast({
-    //           icon: 'none',
-    //           title: '未登录会影响使用体验！',
-    //         })
-    //       }
-    //     }
-    //   })
-    // }
+    
   },
 
   /**

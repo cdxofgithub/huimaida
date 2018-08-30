@@ -63,7 +63,6 @@
 <!--content-->
 <!--使用animation属性指定需要执行的动画-->
 <view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">
-
   <!--drawer content-->
   <view class="drawer_title">请登录</view>
   <view class="drawer_content">
@@ -72,5 +71,5 @@
     <view class='info'>● 在弹出的授权提示中选择允许完成登录。</view>
   </view>
   <!-- <button class="btn_ok" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" bindtap="powerDrawer" data-statu="close">确定</button> -->
-  <button class="btn_ok" open-type='getUserInfo' bindgetuserinfo='userinfo' bindtap="powerDrawer" data-statu="close">登录</button> 
+  <button class="btn_ok" open-type='getUserInfo' bindgetuserinfo='userinfo' bindtap="powerDrawer" data-statu="close">登录</button>
 </view>

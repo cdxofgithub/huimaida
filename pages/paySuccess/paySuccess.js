@@ -63,8 +63,8 @@ Page({
       let validStartTime = that.data.orderDetail.validStartTime
       let vaildEndTime = that.data.orderDetail.vaildEndTime
       let saleNumber = that.data.orderDetail.saleNumber
-      let avatarUrl = wx.getStorageSync('avatarUrl')
-      let nickName = wx.getStorageSync('nickName')
+      let avatarUrl = wx.getStorageSync('avatarUrl') ? wx.getStorageSync('avatarUrl') : '../../images/logo.png'
+      let nickName = wx.getStorageSync('nickName') ? wx.getStorageSync('nickName') : ''
 
       let promise1 = new Promise(function (resolve, reject) {
         wx.getImageInfo({
